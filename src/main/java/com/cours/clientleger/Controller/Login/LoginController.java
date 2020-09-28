@@ -1,13 +1,15 @@
 package com.cours.clientleger.Controller.Login;
 
+import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
+import com.cours.clientleger.Model.Database.Internautes;
 import com.cours.clientleger.Model.Page;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -22,6 +24,8 @@ import com.cours.clientleger.Controller.IndexController;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+    @Autowired
+    InternautesRepository internautesRepository;
     IndexController indexController = new IndexController();
 
     @GetMapping()
@@ -44,13 +48,23 @@ public class LoginController {
 
     @PostMapping("/return")
     public ModelAndView ReturnFromLogin(@RequestParam Map<String, String> data, HttpSession httpSession) {
+        //TODO Password must be hash
 
+        Internautes internautes = null;
+        if (internautesRepository.existsByLoginAndPassword(data.get("login"), data.get("password"))) {
+            internautes = internautesRepository.getByLoginAndPassword(data.get("login"), data.get("password"));
+        }
+        if (internautes != null) {
+            System.out.println("internaute.toString() = " + internautes.toString());
+            httpSession.setAttribute("Internautes", internautes);
+        }
         return indexController.Index(httpSession);
     }
 
     @PostMapping("/registration/return")
     public ModelAndView ReturnFromRegistration(@RequestParam Map<String, String> data, HttpSession httpSession) {
-        System.out.println("data = " + data);
+        //TODO Password must be hash
+
         return indexController.Index(httpSession);
     }
 }

@@ -1,11 +1,14 @@
 package com.cours.clientleger.Model.Database;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table
 public class Internautes {
 
     @Id
@@ -13,24 +16,23 @@ public class Internautes {
     private long id;
     private String nom;
     private String prenom;
+    @Column(name = "datenaissance")
     private java.sql.Date dateNaissance;
+    @Column(name = "dateinscription")
     private java.sql.Date dateInscription;
     private long civilite;
+    @Column(name = "liengoogle")
     private String lienGoogle;
     private String login;
     private String password;
-    private String cvName;
+    @Column(name = "cvname")
+    private String CvName;
     private String email;
 
 
     public long getId() {
         return id;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
 
     public String getNom() {
         return nom;
@@ -105,11 +107,11 @@ public class Internautes {
 
 
     public String getCvName() {
-        return cvName;
+        return CvName;
     }
 
     public void setCvName(String cvName) {
-        this.cvName = cvName;
+        this.CvName = cvName;
     }
 
 
@@ -119,6 +121,23 @@ public class Internautes {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    @Override
+    public String toString() {
+        return
+                "id : " + this.id +
+                        " | nom : " + this.nom +
+                        " | prenom : " + this.prenom +
+                        " | Civilite : " + this.civilite +
+                        " | dateNaissance : " + this.dateNaissance +
+                        " | email : " + this.email +
+                        " | dateInscription : " + this.dateInscription +
+                        " | CvName : " + this.CvName +
+                        " | lienGoogle : " + this.lienGoogle +
+                        " | login : " + this.login +
+                        " | password : " + this.password;
     }
 
 }
