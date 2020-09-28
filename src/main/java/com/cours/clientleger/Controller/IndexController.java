@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import javax.servlet.http.HttpSession;
+
+import static com.cours.clientleger.Controller.RefreshController.*;
 
 @Controller
 public class IndexController {
@@ -18,12 +21,5 @@ public class IndexController {
         page.setPagePath("page/home/Home");
 
         return refresh(page);
-    }
-
-    private ModelAndView refresh(Page page) {
-        ModelAndView model = new ModelAndView("fragment/mainBody");
-        model.addObject(page);
-
-        return model;
     }
 }
