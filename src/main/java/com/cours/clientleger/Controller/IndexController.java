@@ -10,8 +10,9 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class IndexController {
+
     @GetMapping()
-    public ModelAndView Index(HttpSession httpSession){
+    public ModelAndView Index(HttpSession httpSession) {
         Page page = new Page();
         page.setTitle("Home");
         page.setPagePath("page/home/Home");
@@ -19,7 +20,7 @@ public class IndexController {
         return refresh(page);
     }
 
-    private ModelAndView refresh(Page page){
+    private ModelAndView refresh(Page page) {
         ModelAndView model = new ModelAndView("fragment/mainBody");
         model.addObject(page);
 
