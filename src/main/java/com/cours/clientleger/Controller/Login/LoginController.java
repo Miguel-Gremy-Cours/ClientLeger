@@ -43,8 +43,8 @@ public class LoginController {
     }
 
     @PostMapping("/return")
-    public ModelAndView ReturnFromLogin(HttpSession httpSession) {
-        //TODO get the payload of post request to add new user
+    public ModelAndView ReturnFromLogin(@RequestParam Map<String, String> data, HttpSession httpSession) {
+
         return indexController.Index(httpSession);
     }
 
