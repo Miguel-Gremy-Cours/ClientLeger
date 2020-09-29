@@ -49,7 +49,7 @@ public class LoginController {
     @PostMapping("/return")
     public ModelAndView ReturnFromLogin(@RequestParam Map<String, String> data, HttpSession httpSession) {
         //TODO Password must be hash
-
+        ModelAndView modelReturn;
         Internautes internautes = null;
         if (internautesRepository.existsByLoginAndPassword(data.get("login"), data.get("password"))) {
             internautes = internautesRepository.getByLoginAndPassword(data.get("login"), data.get("password"));
@@ -57,8 +57,12 @@ public class LoginController {
         if (internautes != null) {
             System.out.println("internaute.toString() = " + internautes.toString());
             httpSession.setAttribute("Internautes", internautes);
+            modelReturn = indexController.Index(httpSession);
+        } else {
+            httpSession.setAttribute("ErrorLogin", "Login or password incorrect.");
+            modelReturn = Login(httpSession);
         }
-        return indexController.Index(httpSession);
+        return modelReturn;
     }
 
     @PostMapping("/registration/return")

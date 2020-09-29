@@ -1,4 +1,4 @@
-<main class="row">
+<main class="row" xmlns:th="http://www.thymeleaf.org">
     <form class="col d-flex align-items-left flex-column mb-3"
           method="post" action="/login/return">
         <div class="form-group">
@@ -11,9 +11,15 @@
             <input type="password" class="form-control" id="password"
                    aria-describedby="passwordHelp" placeholder="Password"
                    name="password">
-            <small id="passwordHelp" class="form-text text-muted">We'll never share your password
-                with anyone else.</small>
+            <small id="passwordHelp" class="form-text text-muted">We'll
+                never share your password with anyone else.</small>
         </div>
+
+        <span th:if='${#httpSession.getAttribute("ErrorLogin") == "Login or password incorrect."}'
+              class="text-danger mt-1">
+        Login or password incorrect.
+        </span>
+
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
     <div class="col d-flex align-items-center flex-column mb-3 border border-secondary rounded">
