@@ -55,7 +55,6 @@ public class LoginController {
             internautes = internautesRepository.getByLoginAndPassword(data.get("login"), data.get("password"));
         }
         if (internautes != null) {
-            System.out.println("internaute.toString() = " + internautes.toString());
             httpSession.setAttribute("Internautes", internautes);
             modelReturn = indexController.Index(httpSession);
         } else {
@@ -71,4 +70,6 @@ public class LoginController {
 
         return indexController.Index(httpSession);
     }
+
+    //TODO Profile settings controller and web page
 }
