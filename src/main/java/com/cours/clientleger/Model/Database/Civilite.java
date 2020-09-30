@@ -9,26 +9,26 @@ import javax.persistence.Id;
 @Entity
 public class Civilite {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id")
-  private long id;
-  @Column(name = "libelle")
-  private String libelle;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
+    @Column(name = "libelle")
+    private String libelle;
 
-  //region Getters Setters
+    //region Getters Setters
 
-  public long getId() {
-    return id;
-  }
+    public long getId() {
+        return id;
+    }
 
-  public String getLibelle() {
-    return libelle;
-  }
+    public String getLibelle() {
+        return libelle;
+    }
 
-  public void setLibelle(String libelle) {
-    this.libelle = libelle;
-  }
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
 
-  //endregion
+    //endregion
 }

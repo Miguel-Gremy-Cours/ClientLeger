@@ -2,11 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <script th:src="@{/webjars/jquery/3.0.0/jquery.js}"></script>
-    <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.js}"></script>
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css}">
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.css}">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.css}">
-    <link rel="stylesheet" href="/stylesheet/globalStyle.css">
+    <link rel="stylesheet" href="/css/globalStyle.css">
     <!--/*@thymesVar id="page" type="com.cours.clientleger.Model.Page"*/-->
     <title th:text="${page.getTitle()}"></title>
 </head>
@@ -23,5 +25,15 @@
     <footer th:replace="fragment/mainFooter :: footer"></footer>
 
 </div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.js}"></script>
+<script th:src="@{/webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js}"></script>
+<script>
+    $('.form-group.date').datepicker({
+        format: 'dd/mm/yyyy',
+        todayHighlight: true
+    }).val();
+</script>
 </body>
 </html>
