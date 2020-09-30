@@ -51,13 +51,15 @@ public class LoginController {
         //TODO Password must be hash
         ModelAndView modelReturn;
         Internautes internautes = null;
+        //Check if user account exists in database
         if (internautesRepository.existsByLoginAndPassword(data.get("login"), data.get("password"))) {
+            //Internautes object define on database return
             internautes = internautesRepository.getByLoginAndPassword(data.get("login"), data.get("password"));
-        }
-        if (internautes != null) {
+            //Set session information internautes to get in web page
             httpSession.setAttribute("Internautes", internautes);
             modelReturn = indexController.Index(httpSession);
         } else {
+            //Set session error login to get in web page
             httpSession.setAttribute("ErrorLogin", "Login or password incorrect.");
             modelReturn = Login(httpSession);
         }
