@@ -15,9 +15,8 @@
                 never share your password with anyone else.</small>
         </div>
 
-        <span th:if='${#httpSession.getAttribute("ErrorLogin") == "Login or password incorrect."}'
-              class="text-danger mt-1">
-        Login or password incorrect.
+        <span th:if='${#httpSession.getAttribute("ErrorLogin") != null}'
+              class="text-danger mt-1" th:text='${#httpSession.getAttribute("ErrorLogin")}'>
         </span>
 
         <button type="submit" class="btn btn-primary">Login</button>
