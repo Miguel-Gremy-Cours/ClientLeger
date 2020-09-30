@@ -1,5 +1,6 @@
 package com.cours.clientleger.Model.Database;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,21 +11,25 @@ public class Employes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
+    @Column(name = "nom")
     private String nom;
+    @Column(name = "prenom")
     private String prenom;
+    @Column(name = "civilite")
     private long civilite;
-    private long groupeEmployes;
+    @Column(name = "groupe_employes")
+    private long groupe_employes;
+    @Column(name = "login")
     private String login;
+    @Column(name = "password")
     private String password;
 
+    //region Getters Setters
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
 
@@ -55,12 +60,12 @@ public class Employes {
     }
 
 
-    public long getGroupeEmployes() {
-        return groupeEmployes;
+    public long getGroupe_employes() {
+        return groupe_employes;
     }
 
-    public void setGroupeEmployes(long groupeEmployes) {
-        this.groupeEmployes = groupeEmployes;
+    public void setGroupe_employes(long groupeEmployes) {
+        this.groupe_employes = groupeEmployes;
     }
 
 
@@ -80,5 +85,7 @@ public class Employes {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    //endregion
 
 }

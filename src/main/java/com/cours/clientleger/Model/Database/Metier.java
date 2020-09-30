@@ -1,5 +1,6 @@
 package com.cours.clientleger.Model.Database;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,10 +11,14 @@ public class Metier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
+    @Column(name = "libelle")
     private String libelle;
-    private long domaineMetier;
+    @Column(name = "domaine_metier")
+    private long domaine_metier;
 
+    //region Getters Setters
 
     public long getId() {
         return id;
@@ -33,12 +38,14 @@ public class Metier {
     }
 
 
-    public long getDomaineMetier() {
-        return domaineMetier;
+    public long getDomaine_metier() {
+        return domaine_metier;
     }
 
-    public void setDomaineMetier(long domaineMetier) {
-        this.domaineMetier = domaineMetier;
+    public void setDomaine_metier(long domaineMetier) {
+        this.domaine_metier = domaineMetier;
     }
+
+    //endregion
 
 }

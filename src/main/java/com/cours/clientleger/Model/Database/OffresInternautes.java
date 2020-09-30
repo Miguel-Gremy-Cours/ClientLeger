@@ -1,7 +1,9 @@
 package com.cours.clientleger.Model.Database;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -11,36 +13,42 @@ import javax.persistence.IdClass;
 public class OffresInternautes implements Serializable {
 
     @Id
-    private long idInternaute;
+    @Column(name = "id_internaute")
+    private long id_internaute;
     @Id
-    private long idOffre;
-    private java.sql.Date datePostulation;
+    @Column(name = "id_offre")
+    private long id_offre;
+    @Column(name = "date_postulation")
+    private Date datePostulation;
 
+    //region Getters Setters
 
-    public long getIdInternaute() {
-        return idInternaute;
+    public long getId_internaute() {
+        return id_internaute;
     }
 
-    public void setIdInternaute(long idInternaute) {
-        this.idInternaute = idInternaute;
-    }
-
-
-    public long getIdOffre() {
-        return idOffre;
-    }
-
-    public void setIdOffre(long idOffre) {
-        this.idOffre = idOffre;
+    public void setId_internaute(long idInternaute) {
+        this.id_internaute = idInternaute;
     }
 
 
-    public java.sql.Date getDatePostulation() {
+    public long getId_offre() {
+        return id_offre;
+    }
+
+    public void setId_offre(long idOffre) {
+        this.id_offre = idOffre;
+    }
+
+
+    public Date getDatePostulation() {
         return datePostulation;
     }
 
-    public void setDatePostulation(java.sql.Date datePostulation) {
+    public void setDatePostulation(Date datePostulation) {
         this.datePostulation = datePostulation;
     }
+
+    //endregion
 
 }

@@ -1,5 +1,8 @@
 package com.cours.clientleger.Model.Database;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,45 +13,47 @@ public class Contrat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
-    private long typeContrat;
-    private java.sql.Date debutContrat;
-    private long dureContrat;
+    @Column(name = "type_contrat")
+    private long type_contrat;
+    @Column(name = "debut_contrat")
+    private Date debut_contrat;
+    @Column(name = "dure_contrat")
+    private long dure_contrat;
 
-
-    public long getId() {
-        return id;
-    }
+    //region Getters Setters
 
     public void setId(long id) {
         this.id = id;
     }
 
 
-    public long getTypeContrat() {
-        return typeContrat;
+    public long getType_contrat() {
+        return type_contrat;
     }
 
-    public void setTypeContrat(long typeContrat) {
-        this.typeContrat = typeContrat;
-    }
-
-
-    public java.sql.Date getDebutContrat() {
-        return debutContrat;
-    }
-
-    public void setDebutContrat(java.sql.Date debutContrat) {
-        this.debutContrat = debutContrat;
+    public void setType_contrat(long typeContrat) {
+        this.type_contrat = typeContrat;
     }
 
 
-    public long getDureContrat() {
-        return dureContrat;
+    public Date getDebut_contrat() {
+        return debut_contrat;
     }
 
-    public void setDureContrat(long dureContrat) {
-        this.dureContrat = dureContrat;
+    public void setDebut_contrat(Date debutContrat) {
+        this.debut_contrat = debutContrat;
     }
 
+
+    public long getDure_contrat() {
+        return dure_contrat;
+    }
+
+    public void setDure_contrat(long dureContrat) {
+        this.dure_contrat = dureContrat;
+    }
+
+    //endregion
 }

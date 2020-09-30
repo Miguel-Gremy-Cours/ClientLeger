@@ -1,5 +1,7 @@
 package com.cours.clientleger.Model.Database;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,22 +15,30 @@ public class Internautes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
+    @Column(name = "nom")
     private String nom;
+    @Column(name = "prenom")
     private String prenom;
-    @Column(name = "datenaissance")
-    private java.sql.Date dateNaissance;
-    @Column(name = "dateinscription")
-    private java.sql.Date dateInscription;
+    @Column(name = "date_naissance")
+    private Date date_naissance;
+    @Column(name = "date_inscription")
+    private Date date_inscription;
+    @Column(name = "civilite")
     private long civilite;
-    @Column(name = "liengoogle")
-    private String lienGoogle;
+    @Column(name = "lien_google")
+    private String lien_google;
+    @Column(name = "login")
     private String login;
+    @Column(name = "password")
     private String password;
-    @Column(name = "cvname")
-    private String CvName;
+    @Column(name = "cv_name")
+    private String cv_name;
+    @Column(name = "email")
     private String email;
 
+    //region Getters Setters
 
     public long getId() {
         return id;
@@ -52,21 +62,21 @@ public class Internautes {
     }
 
 
-    public java.sql.Date getDateNaissance() {
-        return dateNaissance;
+    public Date getDate_naissance() {
+        return date_naissance;
     }
 
-    public void setDateNaissance(java.sql.Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
+    public void setDate_naissance(java.sql.Date dateNaissance) {
+        this.date_naissance = dateNaissance;
     }
 
 
-    public java.sql.Date getDateInscription() {
-        return dateInscription;
+    public Date getDate_inscription() {
+        return date_inscription;
     }
 
-    public void setDateInscription(java.sql.Date dateInscription) {
-        this.dateInscription = dateInscription;
+    public void setDate_inscription(Date dateInscription) {
+        this.date_inscription = dateInscription;
     }
 
 
@@ -79,12 +89,12 @@ public class Internautes {
     }
 
 
-    public String getLienGoogle() {
-        return lienGoogle;
+    public String getLien_google() {
+        return lien_google;
     }
 
-    public void setLienGoogle(String lienGoogle) {
-        this.lienGoogle = lienGoogle;
+    public void setLien_google(String lienGoogle) {
+        this.lien_google = lienGoogle;
     }
 
 
@@ -106,12 +116,12 @@ public class Internautes {
     }
 
 
-    public String getCvName() {
-        return CvName;
+    public String getCv_name() {
+        return cv_name;
     }
 
-    public void setCvName(String cvName) {
-        this.CvName = cvName;
+    public void setCv_name(String cv_name) {
+        this.cv_name = cv_name;
     }
 
 
@@ -123,6 +133,7 @@ public class Internautes {
         this.email = email;
     }
 
+    //endregion
 
     @Override
     public String toString() {
@@ -131,11 +142,11 @@ public class Internautes {
                         " | nom : " + this.nom +
                         " | prenom : " + this.prenom +
                         " | Civilite : " + this.civilite +
-                        " | dateNaissance : " + this.dateNaissance +
+                        " | dateNaissance : " + this.date_naissance +
                         " | email : " + this.email +
-                        " | dateInscription : " + this.dateInscription +
-                        " | CvName : " + this.CvName +
-                        " | lienGoogle : " + this.lienGoogle +
+                        " | dateInscription : " + this.date_inscription +
+                        " | CvName : " + this.cv_name +
+                        " | lienGoogle : " + this.lien_google +
                         " | login : " + this.login +
                         " | password : " + this.password;
     }

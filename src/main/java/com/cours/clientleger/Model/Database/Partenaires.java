@@ -1,5 +1,6 @@
 package com.cours.clientleger.Model.Database;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,23 +11,29 @@ public class Partenaires {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
+    @Column(name = "siret")
     private String siret;
+    @Column(name = "adresse")
     private String adresse;
-    private long numeroAdresse;
+    @Column(name = "numero_adresse")
+    private long numero_adresse;
+    @Column(name = "libelle")
     private String libelle;
+    @Column(name = "email")
     private String email;
+    @Column(name = "telephone")
     private String telephone;
+    @Column(name = "login")
     private String login;
+    @Column(name = "password")
     private String password;
 
+    //region Getters Setters
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
 
@@ -48,12 +55,12 @@ public class Partenaires {
     }
 
 
-    public long getNumeroAdresse() {
-        return numeroAdresse;
+    public long getNumero_adresse() {
+        return numero_adresse;
     }
 
-    public void setNumeroAdresse(long numeroAdresse) {
-        this.numeroAdresse = numeroAdresse;
+    public void setNumero_adresse(long numero_adresse) {
+        this.numero_adresse = numero_adresse;
     }
 
 
@@ -100,5 +107,7 @@ public class Partenaires {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    //endregion
 
 }
