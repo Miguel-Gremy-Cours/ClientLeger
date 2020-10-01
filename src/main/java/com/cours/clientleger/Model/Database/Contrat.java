@@ -1,6 +1,6 @@
 package com.cours.clientleger.Model.Database;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ public class Contrat {
     @Column(name = "type_contrat")
     private long type_contrat;
     @Column(name = "debut_contrat")
-    private Date debut_contrat;
+    private LocalDate debut_contrat;
     @Column(name = "dure_contrat")
     private long dure_contrat;
 
@@ -38,11 +38,11 @@ public class Contrat {
     }
 
 
-    public Date getDebut_contrat() {
+    public LocalDate getDebut_contrat() {
         return debut_contrat;
     }
 
-    public void setDebut_contrat(Date debutContrat) {
+    public void setDebut_contrat(LocalDate debutContrat) {
         this.debut_contrat = debutContrat;
     }
 

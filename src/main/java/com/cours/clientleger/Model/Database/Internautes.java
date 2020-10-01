@@ -1,6 +1,6 @@
 package com.cours.clientleger.Model.Database;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,9 +22,9 @@ public class Internautes {
     @Column(name = "prenom")
     private String prenom;
     @Column(name = "date_naissance")
-    private Date date_naissance;
+    private LocalDate date_naissance;
     @Column(name = "date_inscription")
-    private Date date_inscription;
+    private LocalDate date_inscription;
     @Column(name = "civilite")
     private long civilite;
     @Column(name = "lien_google")
@@ -62,20 +62,20 @@ public class Internautes {
     }
 
 
-    public Date getDate_naissance() {
+    public LocalDate getDate_naissance() {
         return date_naissance;
     }
 
-    public void setDate_naissance(java.sql.Date dateNaissance) {
+    public void setDate_naissance(LocalDate dateNaissance) {
         this.date_naissance = dateNaissance;
     }
 
 
-    public Date getDate_inscription() {
+    public LocalDate getDate_inscription() {
         return date_inscription;
     }
 
-    public void setDate_inscription(Date dateInscription) {
+    public void setDate_inscription(LocalDate dateInscription) {
         this.date_inscription = dateInscription;
     }
 

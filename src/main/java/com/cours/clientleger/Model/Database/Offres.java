@@ -1,6 +1,7 @@
 package com.cours.clientleger.Model.Database;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Offres {
     @Column(name = "contrat")
     private long contrat;
     @Column(name = "date_publication")
-    private Date date_publication;
+    private LocalDate date_publication;
     @Column(name = "dure_diffusion")
     private long dure_diffusion;
     @Column(name = "nombre_postes")
@@ -82,11 +83,11 @@ public class Offres {
     }
 
 
-    public Date getDate_publication() {
+    public LocalDate getDate_publication() {
         return date_publication;
     }
 
-    public void setDate_publication(Date publication) {
+    public void setDate_publication(LocalDate publication) {
         this.date_publication = publication;
     }
 

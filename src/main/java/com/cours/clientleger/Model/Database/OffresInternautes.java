@@ -1,7 +1,8 @@
 package com.cours.clientleger.Model.Database;
 
+
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class OffresInternautes implements Serializable {
     @Column(name = "id_offre")
     private long id_offre;
     @Column(name = "date_postulation")
-    private Date datePostulation;
+    private LocalDate datePostulation;
 
     //region Getters Setters
 
@@ -41,11 +42,11 @@ public class OffresInternautes implements Serializable {
     }
 
 
-    public Date getDatePostulation() {
+    public LocalDate getDatePostulation() {
         return datePostulation;
     }
 
-    public void setDatePostulation(Date datePostulation) {
+    public void setDatePostulation(LocalDate datePostulation) {
         this.datePostulation = datePostulation;
     }
 
