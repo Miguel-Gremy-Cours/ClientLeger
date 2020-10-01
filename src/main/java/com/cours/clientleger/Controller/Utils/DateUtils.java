@@ -11,7 +11,7 @@ public class DateUtils {
         LocalDate localDate;
         try {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            localDate = LocalDate.parse("01/10/2020".replace("/", "-"), dateTimeFormatter);
+            localDate = LocalDate.parse(string.replace("/", "-"), dateTimeFormatter);
         } catch (Exception e) {
             localDate = null;
             System.out.println(e.getCause());

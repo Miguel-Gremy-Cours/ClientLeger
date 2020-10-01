@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table
 public class Internautes {
@@ -31,6 +32,7 @@ public class Internautes {
         this.nom = nom;
         this.prenom = prenom;
         this.date_naissance = date_naissance;
+        this.date_inscription = LocalDate.now();
         this.civilite = civilite;
         this.lien_google = lien_google;
         this.login = login;
@@ -43,6 +45,7 @@ public class Internautes {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
     @Column(name = "nom")
