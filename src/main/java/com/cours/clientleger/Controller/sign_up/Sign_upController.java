@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -28,7 +29,7 @@ public class Sign_upController {
     IndexController indexController = new IndexController();
 
     @GetMapping("/new")
-    public ModelAndView Register(HttpSession httpSession) {
+    public ModelAndView Sing_up(HttpSession httpSession) {
         Page page = new Page();
         page.setTitle("Sign up");
         page.setPagePath("page/sign up/Sign up");
@@ -37,24 +38,38 @@ public class Sign_upController {
     }
 
     @PostMapping("/return")
-    public ModelAndView ReturnFromRegistration(@RequestParam Map<String, String> data, HttpSession httpSession) {
-        System.out.println(data);
+    public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) {
         ModelAndView modelReturn;
-        Internautes internautes = new Internautes();
-        internautes.setNom(data.get("nom"));
-        internautes.setPrenom(data.get("prenom"));
-        internautes.setDate_naissance(stringToLocalDate(data.get("date_naissance")));
+        int civilite = 0;
         if (data.get("civility").equals("male")) {
-            internautes.setCivilite(1);
+            civilite = 1;
         } else if (data.get("civility").equals("female")) {
-            internautes.setCivilite(2);
+            civilite = 2;
         }
-        internautes.setLogin(data.get("login"));
-        internautes.setPassword(String.valueOf(data.get("password").hashCode()));
-        internautes.setEmail(data.get("email"));
+        Internautes internautes = new Internautes(
+                data.get("nom"),
+                data.get("prenom"),
+                stringToLocalDate(data.get("date_naissance")),
+                civilite,
+                null,
+                data.get("login"),
+                String.valueOf(data.get("password").hashCode()),
+                null,
+                data.get("email")
+        );
 
-//EmailValidator.getInstance().isValid(internautes.getEmail())
+        System.out.println(internautes.toString());
 
-        return indexController.Index(httpSession);
+        if (internautes.isSet()) {
+            internautesRepository.save(internautes);
+            modelReturn = indexController.Index(httpSession);
+        } else {
+            List<String> problems = internautes.getProblem();
+            httpSession.setAttribute("problems", problems);
+            modelReturn = Sing_up(httpSession);
+        }
+
+
+        return modelReturn;
     }
 }

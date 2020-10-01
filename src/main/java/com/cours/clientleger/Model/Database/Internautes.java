@@ -1,6 +1,10 @@
 package com.cours.clientleger.Model.Database;
 
+import org.apache.commons.validator.routines.EmailValidator;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +17,32 @@ import javax.persistence.Table;
 @Table
 public class Internautes {
 
+    public Internautes(
+            String nom,
+            String prenom,
+            LocalDate date_naissance,
+            long civilite,
+            String lien_google,
+            String login,
+            String password,
+            String cv_name,
+            String email
+    ) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.date_naissance = date_naissance;
+        this.civilite = civilite;
+        this.lien_google = lien_google;
+        this.login = login;
+        this.password = password;
+        this.cv_name = cv_name;
+        this.email = email;
+    }
+
+    public Internautes() {
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
     @Column(name = "nom")
@@ -149,6 +177,63 @@ public class Internautes {
                         " | lienGoogle : " + this.lien_google +
                         " | login : " + this.login +
                         " | password : " + this.password;
+    }
+
+    public boolean isSet() {
+        boolean isSet = true;
+        if (this.nom.equals("")) {
+            isSet = false;
+        } else if (this.prenom.equals("")) {
+            isSet = false;
+        } else if (this.civilite != 1 && this.civilite != 2) {
+            isSet = false;
+        } else if (this.date_naissance.equals(LocalDate.now())) {
+            isSet = false;
+        } else if (this.login.equals("")) {
+            isSet = false;
+        } else if (this.password.equals("0")) {
+            isSet = false;
+        } else if (!this.email.equals("")) {
+            if (!EmailValidator.getInstance().isValid(this.email)) {
+                isSet = false;
+            }
+        } else {
+            isSet = false;
+        }
+
+        return isSet;
+    }
+
+    public List<String> getProblem() {
+        List<String> problems = new ArrayList<>();
+
+        if (this.nom.equals("")) {
+            problems.add("Last name is empty");
+        }
+        if (this.prenom.equals("")) {
+            problems.add("First name is empty");
+        }
+        if (this.civilite != 1 && this.civilite != 2) {
+            problems.add("Civilite is not correct");
+        }
+        if (this.date_naissance.equals(LocalDate.now())) {
+            problems.add("Birth date is empty");
+        }
+        if (this.login.equals("")) {
+            problems.add("Login is empty");
+        }
+        if (this.password.equals("0")) {
+            problems.add("Password is empty");
+        }
+        if (!this.email.equals("")) {
+            if (!EmailValidator.getInstance().isValid(this.email)) {
+                problems.add("Email is not correct");
+            }
+        } else {
+            problems.add("Email is empty");
+        }
+
+        return problems;
     }
 
 }
