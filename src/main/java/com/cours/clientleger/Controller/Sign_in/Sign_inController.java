@@ -1,4 +1,4 @@
-package com.cours.clientleger.Controller.Login;
+package com.cours.clientleger.Controller.Sign_in;
 
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
 import com.cours.clientleger.Model.Database.Internautes;
@@ -24,7 +24,7 @@ import com.cours.clientleger.Controller.IndexController;
 
 @Controller
 @RequestMapping("/sign_in")
-public class LoginController {
+public class Sign_inController {
     @Autowired
     InternautesRepository internautesRepository;
     IndexController indexController = new IndexController();

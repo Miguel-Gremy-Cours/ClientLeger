@@ -1,4 +1,4 @@
-package com.cours.clientleger.Controller.signup;
+package com.cours.clientleger.Controller.sign_up;
 
 import com.cours.clientleger.Controller.IndexController;
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
@@ -22,7 +22,7 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 
 @Controller
 @RequestMapping("/sign_up")
-public class SignupController {
+public class Sign_upController {
     @Autowired
     InternautesRepository internautesRepository;
     IndexController indexController = new IndexController();
