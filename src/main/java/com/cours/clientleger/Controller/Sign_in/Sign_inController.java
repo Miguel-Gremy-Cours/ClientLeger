@@ -2,6 +2,7 @@ package com.cours.clientleger.Controller.Sign_in;
 
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
 import com.cours.clientleger.Model.Database.Internautes;
+import com.cours.clientleger.Model.Enum.ProblemEnum;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class Sign_inController {
     IndexController indexController = new IndexController();
 
     @GetMapping()
-    public ModelAndView Login(HttpSession httpSession) {
+    public ModelAndView Sign_in(HttpSession httpSession) {
         Page page = new Page();
         page.setTitle("Sign in");
         page.setPagePath("page/sign in/Sign in");
@@ -52,8 +53,8 @@ public class Sign_inController {
             modelReturn = indexController.Index(httpSession);
         } else {
             //Set session error login to get in web page
-            httpSession.setAttribute("ErrorLogin", "Login or password incorrect.");
-            modelReturn = Login(httpSession);
+            httpSession.setAttribute("ErrorLogin", ProblemEnum.ERROR_LOGIN.getFName());
+            modelReturn = Sign_in(httpSession);
         }
         return modelReturn;
     }

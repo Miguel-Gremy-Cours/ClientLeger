@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -26,7 +28,7 @@ public class Sign_upController {
     Sign_inController sign_inController = new Sign_inController();
 
     @GetMapping("/new")
-    public ModelAndView Sing_up(HttpSession httpSession) {
+    public ModelAndView Sign_up(HttpSession httpSession) {
         Page page = new Page();
         page.setTitle("Sign up");
         page.setPagePath("page/sign up/Sign up");
@@ -37,13 +39,11 @@ public class Sign_upController {
     @PostMapping("/return")
     public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) {
         ModelAndView modelReturn;
-
         if (databaseUtils.insertInDatabase(data, httpSession) != null) {
-            modelReturn = sign_inController.Login(httpSession);
+            modelReturn = sign_inController.Sign_in(httpSession);
         } else {
-            modelReturn = Sing_up(httpSession);
+            modelReturn = Sign_up(httpSession);
         }
-
 
         return modelReturn;
     }

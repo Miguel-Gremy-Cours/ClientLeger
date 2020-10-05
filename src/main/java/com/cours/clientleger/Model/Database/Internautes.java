@@ -1,5 +1,7 @@
 package com.cours.clientleger.Model.Database;
 
+import com.cours.clientleger.Model.Enum.ProblemEnum;
+
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.time.LocalDate;
@@ -12,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import static java.util.Objects.isNull;
 
 
 @Entity
@@ -211,29 +215,33 @@ public class Internautes {
         List<String> problems = new ArrayList<>();
 
         if (this.nom.equals("")) {
-            problems.add("Last name is empty");
+            problems.add(ProblemEnum.LAST_NAME.getFName());
         }
         if (this.prenom.equals("")) {
-            problems.add("First name is empty");
+            problems.add(ProblemEnum.FIRST_NAME.getFName());
         }
         if (this.civilite != 1 && this.civilite != 2) {
-            problems.add("Civilite is not correct");
+            problems.add(ProblemEnum.CIVILITE.getFName());
         }
-        if (this.date_naissance.equals(LocalDate.now())) {
-            problems.add("Birth date is empty");
+        if (!isNull(this.date_naissance)) {
+            if (this.date_naissance.equals(LocalDate.now())) {
+                problems.add(ProblemEnum.BIRTH_DATE.getFName());
+            }
+        } else {
+            problems.add(ProblemEnum.BIRTH_DATE.getFName());
         }
         if (this.login.equals("")) {
-            problems.add("Login is empty");
+            problems.add(ProblemEnum.LOGIN.getFName());
         }
         if (this.password.equals("0")) {
-            problems.add("Password is empty");
+            problems.add(ProblemEnum.PASSWORD.getFName());
         }
         if (!this.email.equals("")) {
             if (!EmailValidator.getInstance().isValid(this.email)) {
-                problems.add("Email is not correct");
+                problems.add(ProblemEnum.EMAIL.getFName());
             }
         } else {
-            problems.add("Email is empty");
+            problems.add(ProblemEnum.EMAIL_EMPTY.getFName());
         }
 
         return problems;
