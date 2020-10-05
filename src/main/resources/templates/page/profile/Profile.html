@@ -1,0 +1,48 @@
+<main class="row" xmlns:th="http://www.thymeleaf.org">
+    <div th:with='internaute=${#httpSession.getAttribute("Internautes")}'
+         class="col d-flex align-items-left flex-column mb-3">
+        <div class="form-group">
+            <label for="nom">Last name</label>
+            <label type="text" class="form-control" id="nom"
+                   placeholder="Enter login" name="nom"
+                   th:text="${internaute.getNom()}"></label>
+        </div>
+        <div class="form-group">
+            <label for="prenom">First name</label>
+            <label type="text" class="form-control" id="prenom"
+                   placeholder="Enter login" name="prenom"
+                   th:text="${internaute.getPrenom()}"></label>
+        </div>
+
+        <div class="form-group">
+            <label for="date_naissance">Birth date</label>
+            <label type="text" class="form-control" id="date_naissance"
+                   name="date_naissance"
+                   th:text="${internaute.getDate_naissance()}"></label>
+        </div>
+
+        <div class="form-group">
+            <label for="civilite">Civility</label>
+            <label type="text" class="form-control" id="civilite"
+                   name="civilite"
+                   th:text="${internaute.getCivilite() == 1} ? 'Male' : 'Female'"></label>
+        </div>
+
+        <!-- Include Google link -->
+
+        <!-- Include CV -->
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <label type="text" class="form-control" id="email"
+                   name="email"
+                   th:text="${internaute.getEmail()}"></label>
+        </div>
+    </div>
+    <div class="col d-flex align-items-center flex-column mb-3 border border-secondary rounded">
+        <p class="p-2 bd-highlight">Modify your information.</p>
+        <form action="/profile/modify" method="get">
+            <button type="submit" class="btn btn-primary p-2 bd-highlight">Modify</button>
+        </form>
+    </div>
+</main>

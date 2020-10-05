@@ -1,0 +1,82 @@
+<main class="row" xmlns:th="http://www.thymeleaf.org">
+    <form th:with='internaute=${#httpSession.getAttribute("Internautes")}'
+          class="col d-flex align-items-left flex-column mb-3"
+          method="post" action="/sign_up/return">
+        <div th:with='problems=${#httpSession.getAttribute("problems")}'>
+            <div th:each="problem : ${problems}">
+                <span class="text-danger mt-1" th:text="${problem}"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nom">Last name</label>
+            <input type="text" class="form-control" id="nom"
+                   placeholder="Enter login" name="nom"
+                   th:text="${internaute.getNom()}">
+        </div>
+        <div class="form-group">
+            <label for="prenom">First name</label>
+            <input type="text" class="form-control" id="prenom"
+                   placeholder="Enter login" name="prenom"
+                   th:text="${internaute.getPrenom()}">
+        </div>
+
+        <div class="form-group date">
+            <label for="date_naissance">Birth date</label>
+            <input type="text" class="form-control" id="date_naissance" name="date_naissance"><span
+                class="input-group-addon"><i
+                class="glyphicon glyphicon-th"
+                th:text="${internaute.getDate_naissance()}"></i></span>
+        </div>
+
+        <div th:with="civilite=${internaute.getCivilite()}"
+             class="form-group">
+            <div class="form-check form-check">
+                <input class="form-check-input" type="radio" id="check_box_civility_male"
+                       name="civility" value="male" th:checked="${civilite == 1}">
+                <label class="form-check-label" for="check_box_civility_male">Male</label>
+            </div>
+            <div class="form-check form-check">
+                <input class="form-check-input" type="radio" id="check_box_civility_female"
+                       name="civility" value="female" th:checked="${civilite == 2}">
+                <label class="form-check-label" for="check_box_civility_female">Female</label>
+            </div>
+        </div>
+
+        <!-- Include Google link -->
+
+        <div class="form-group">
+            <label for="login">Login</label>
+            <input type="text" class="form-control" id="login"
+                   placeholder="Enter login" name="login" aria-describedby="loginHelp">
+            <small id="loginHelp" class="form-text text-muted">We'll
+                never share your login with anyone else.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">password</label>
+            <input type="password" class="form-control" id="password"
+                   placeholder="Enter password" name="password" aria-describedby="passwordHelp">
+            <small id="passwordHelp" class="form-text text-muted">We'll
+                never share your password with anyone else.</small>
+        </div>
+
+        <!-- Include CV -->
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email"
+                   placeholder="Enter email" name="email">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create account</button>
+
+    </form>
+    <div class="col d-flex align-items-center flex-column mb-3 border border-secondary rounded">
+        <p class="p-2 bd-highlight">You already have an account ?</p>
+        <p class="p-2 bd-highlight">Connect yourself !</p>
+        <form action="/sign_in" method="get">
+            <button type="submit" class="btn btn-primary p-2 bd-highlight">Login</button>
+        </form>
+    </div>
+</main>
