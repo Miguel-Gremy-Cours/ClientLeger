@@ -10,7 +10,7 @@ public class DateUtils {
     public static LocalDate stringToLocalDate(String string) {
         LocalDate localDate;
         try {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             localDate = LocalDate.parse(string.replace("/", "-"), dateTimeFormatter);
         } catch (Exception e) {
             localDate = null;

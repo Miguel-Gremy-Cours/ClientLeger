@@ -49,6 +49,7 @@ public class Sign_inController {
             //Internautes object define on database return
             internautes = internautesRepository.getByLoginAndPassword(data.get("login"), String.valueOf(data.get("password").hashCode()));
             //Set session information internautes to get in web page
+            httpSession.setAttribute("passwordClear", data.get("password"));
             httpSession.setAttribute("Internautes", internautes);
             modelReturn = indexController.Index(httpSession);
         } else {
@@ -58,7 +59,4 @@ public class Sign_inController {
         }
         return modelReturn;
     }
-
-
-    //TODO Profile settings controller and web page
 }

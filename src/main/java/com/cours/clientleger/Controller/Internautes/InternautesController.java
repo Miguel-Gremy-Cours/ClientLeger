@@ -43,7 +43,13 @@ public class InternautesController {
 
     @PostMapping("/modify/return")
     public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) {
+        ModelAndView modelReturn;
+        if (databaseUtils.updateInDatabase(data, httpSession) != null) {
+            modelReturn = Profile(httpSession);
+        } else {
+            modelReturn = Modify(httpSession);
+        }
 
-        return null;
+        return modelReturn;
     }
 }

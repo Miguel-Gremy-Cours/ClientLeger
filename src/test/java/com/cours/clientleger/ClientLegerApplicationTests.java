@@ -5,6 +5,8 @@ import com.cours.clientleger.Model.Enum.ProblemEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
+
 
 @SpringBootTest
 class ClientLegerApplicationTests {
@@ -12,7 +14,7 @@ class ClientLegerApplicationTests {
     @Test
     void contextLoads() {
         System.out.println(
-                ProblemEnum.LAST_NAME.getFName()
+                LocalDate.now()
         );
     }
 
