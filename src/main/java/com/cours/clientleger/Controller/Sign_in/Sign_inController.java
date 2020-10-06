@@ -41,7 +41,7 @@ public class Sign_inController {
 
 
     @PostMapping("/return")
-    public ModelAndView ReturnFromLogin(@RequestParam Map<String, String> data, HttpSession httpSession) {
+    public ModelAndView ReturnFromSign_in(@RequestParam Map<String, String> data, HttpSession httpSession) {
         ModelAndView modelReturn;
         Internautes internautes;
         //Check if user account exists in database

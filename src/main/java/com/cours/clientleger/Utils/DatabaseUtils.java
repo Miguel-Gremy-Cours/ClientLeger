@@ -1,5 +1,6 @@
 package com.cours.clientleger.Utils;
 
+import com.cours.clientleger.Application.Internautes.InternautesValidatorGetProblem;
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
 import com.cours.clientleger.Model.Database.Internautes;
 
@@ -12,6 +13,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import static com.cours.clientleger.Utils.DateUtils.stringToLocalDate;
+import static com.cours.clientleger.Application.Internautes.InternautesValidatorIsSet.*;
 
 @Component
 public class DatabaseUtils {
@@ -39,11 +41,11 @@ public class DatabaseUtils {
                     data.get("email")
             );
         }
-        if (internautes.isSet()) {
+        if (isSet(internautes)) {
             internautesRepository.save(internautes);
             httpSession.setAttribute("Internautes", internautes);
         } else {
-            List<String> problems = internautes.getProblem();
+            List<String> problems = InternautesValidatorGetProblem.getProblem(internautes);
             httpSession.setAttribute("problems", problems);
             internautes = null;
         }
@@ -69,11 +71,11 @@ public class DatabaseUtils {
             internautes.setCv_name(null);
             internautes.setEmail(data.get("email"));
         }
-        if (internautes.isSet()) {
+        if (isSet(internautes)) {
             internautesRepository.save(internautes);
             httpSession.setAttribute("Internautes", internautes);
         } else {
-            List<String> problems = internautes.getProblem();
+            List<String> problems = InternautesValidatorGetProblem.getProblem(internautes);
             httpSession.setAttribute("problems", problems);
             internautes = null;
         }

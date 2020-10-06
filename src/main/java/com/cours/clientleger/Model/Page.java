@@ -3,6 +3,10 @@ package com.cours.clientleger.Model;
 public class Page {
     private String title;
 
+    private String pagePath;
+
+    //region Getter Setters
+
     public String getTitle() {
         return title;
     }
@@ -11,8 +15,6 @@ public class Page {
         this.title = title;
     }
 
-    private String pagePath;
-
     public String getPagePath() {
         return pagePath;
     }
@@ -20,4 +22,7 @@ public class Page {
     public void setPagePath(String pagePath) {
         this.pagePath = pagePath;
     }
+
+    //endregion
+
 }

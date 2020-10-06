@@ -1,8 +1,12 @@
 package com.cours.clientleger.Controller.Sign_up;
 
+import com.cours.clientleger.Application.Internautes.InternautesCreateInstance;
+import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
+import com.cours.clientleger.Application.Internautes.InternautesValidatorGetProblem;
 import com.cours.clientleger.Controller.Sign_in.Sign_inController;
 import com.cours.clientleger.Utils.DatabaseUtils;
 import com.cours.clientleger.Model.Page;
+import com.cours.clientleger.Application.Internautes.Create.InternautesCreateHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +27,8 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 public class Sign_upController {
     @Autowired
     DatabaseUtils databaseUtils;
+    @Autowired
+    InternautesCreateHandler internautesCreateHandler;
     Sign_inController sign_inController = new Sign_inController();
 
     @GetMapping("/new")
@@ -35,12 +41,20 @@ public class Sign_upController {
     }
 
     @PostMapping("/return")
-    public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) {
-        ModelAndView modelReturn;
-        if (databaseUtils.insertInDatabase(data, httpSession) != null) {
-            modelReturn = sign_inController.Sign_in(httpSession);
-        } else {
-            modelReturn = Sign_up(httpSession);
+    public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
+        ModelAndView modelReturn = null;
+        try {
+            internautesCreateHandler.CreateInternautes(data);
+        } catch (Exception e) {
+            if (e.equals(InternautesExceptionEnum.LOGIN_USED.getFName())) {
+
+            } else if (e.equals(InternautesExceptionEnum.EMAIL_USED.getFName())) {
+
+            } else if (e.equals(InternautesExceptionEnum.INCORRECT_VALUES.getFName())) {
+                InternautesValidatorGetProblem.getProblem(new InternautesCreateInstance().CreateInternautes(data));
+            } else if (e.equals(InternautesExceptionEnum.DATA_EMPTY.getFName())) {
+
+            }
         }
 
         return modelReturn;

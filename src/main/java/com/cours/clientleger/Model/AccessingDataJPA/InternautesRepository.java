@@ -9,4 +9,8 @@ public interface InternautesRepository extends CrudRepository<Internautes, Long>
 
     Boolean existsByLoginAndPassword(String login, String password);
 
+    Boolean existsByEmail(String email);
+
+    Boolean existsByLogin(String login);
+
 }
