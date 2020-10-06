@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -42,20 +44,13 @@ public class Sign_upController {
 
     @PostMapping("/return")
     public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
-        ModelAndView modelReturn = null;
-        try {
-            internautesCreateHandler.CreateInternautes(data);
-        } catch (Exception e) {
-            if (e.equals(InternautesExceptionEnum.LOGIN_USED.getFName())) {
-
-            } else if (e.equals(InternautesExceptionEnum.EMAIL_USED.getFName())) {
-
-            } else if (e.equals(InternautesExceptionEnum.INCORRECT_VALUES.getFName())) {
-                InternautesValidatorGetProblem.getProblem(new InternautesCreateInstance().CreateInternautes(data));
-            } else if (e.equals(InternautesExceptionEnum.DATA_EMPTY.getFName())) {
-
-            }
+        ModelAndView modelReturn;
+        if (internautesCreateHandler.CreateInternautes(data, httpSession)) {
+            modelReturn = sign_inController.Sign_in(httpSession);
+        } else {
+            modelReturn = Sign_up(httpSession);
         }
+
 
         return modelReturn;
     }

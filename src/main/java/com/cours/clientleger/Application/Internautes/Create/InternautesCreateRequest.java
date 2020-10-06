@@ -1,28 +1,31 @@
 package com.cours.clientleger.Application.Internautes.Create;
 
+import com.cours.clientleger.Application.Internautes.InternautesCreateInstance;
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
+import com.cours.clientleger.Model.Database.Internautes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+import static com.cours.clientleger.Application.Internautes.InternautesValidatorIsSet.isSet;
+
 @Component
 public class InternautesCreateRequest {
     @Autowired
-    InternautesRepository internautesRepository;
+    InternautesCreateInstance internautesCreateInstance;
+    @Autowired
+    InternautesCreateResponse internautesCreateResponse;
 
     public void CreateInDatabaseRequest(Map<String, String> data) throws Exception {
-        if (!internautesRepository.existsByEmail(data.get("email"))) {
-            if (internautesRepository.existsByLogin(data.get("login"))) {
-                InternautesCreateResponse internautesCreateResponse = new InternautesCreateResponse();
-                internautesCreateResponse.CreateInDatabaseResponse(data);
-            } else {
-                throw new Exception(InternautesExceptionEnum.LOGIN_USED.getFName());
-            }
+        Internautes internautes = internautesCreateInstance.CreateInternautes(data);
+        if (isSet(internautes)) {
+            internautesCreateResponse.CreateInDatabaseResponse(data);
         } else {
-            throw new Exception(InternautesExceptionEnum.EMAIL_USED.getFName());
+            throw new Exception(InternautesExceptionEnum.INCORRECT_VALUES.getFName());
         }
+
     }
 }

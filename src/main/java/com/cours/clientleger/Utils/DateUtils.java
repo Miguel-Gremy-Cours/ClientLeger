@@ -14,7 +14,6 @@ public class DateUtils {
             localDate = LocalDate.parse(string.replace("/", "-"), dateTimeFormatter);
         } catch (Exception e) {
             localDate = null;
-            System.out.println(e.getCause());
             System.out.println(e.getMessage());
         }
         return localDate;

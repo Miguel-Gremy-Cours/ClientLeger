@@ -1,4 +1,4 @@
-<main class="row">
+<main class="row" xmlns:th="http://www.thymeleaf.org">
     <form class="col d-flex align-items-left flex-column mb-3"
           method="post" action="/sign_up/return">
         <div th:with='problems=${#httpSession.getAttribute("problems")}'>

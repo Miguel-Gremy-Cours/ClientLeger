@@ -10,19 +10,23 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-import static com.cours.clientleger.Application.Internautes.InternautesValidatorIsSet.isSet;
-
 @Component
 public class InternautesCreateResponse {
     @Autowired
     InternautesRepository internautesRepository;
+    @Autowired
+    InternautesCreateInstance internautesCreateInstance;
 
     public void CreateInDatabaseResponse(Map<String, String> data) throws Exception {
-        Internautes internautes = new InternautesCreateInstance().CreateInternautes(data);
-        if (isSet(internautes)) {
-            internautesRepository.save(internautes);
+        if (!internautesRepository.existsByEmail(data.get("email"))) {
+            if (!internautesRepository.existsByLogin(data.get("login"))) {
+                Internautes internautes = internautesCreateInstance.CreateInternautes(data);
+                internautesRepository.save(internautes);
+            } else {
+                throw new Exception(InternautesExceptionEnum.LOGIN_USED.getFName());
+            }
         } else {
-            throw new Exception(InternautesExceptionEnum.INCORRECT_VALUES.getFName());
+            throw new Exception(InternautesExceptionEnum.EMAIL_USED.getFName());
         }
     }
 }

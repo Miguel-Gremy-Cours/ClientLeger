@@ -2,13 +2,17 @@ package com.cours.clientleger.Application.Internautes;
 
 import com.cours.clientleger.Model.Database.Internautes;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Map;
 
 import static com.cours.clientleger.Utils.DateUtils.stringToLocalDate;
+import static com.cours.clientleger.Application.Internautes.InternautesValidatorIsEmpty.isEmpty;
 
+@Component
 public class InternautesCreateInstance {
     public Internautes CreateInternautes(Map<String, String> data) throws Exception {
-        if (data.isEmpty()) {
+        if (isEmpty(data)) {
             throw new Exception(InternautesExceptionEnum.DATA_EMPTY.getFName());
         } else {
             int civilite = 0;
