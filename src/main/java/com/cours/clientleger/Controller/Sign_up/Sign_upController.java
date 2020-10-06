@@ -1,7 +1,7 @@
 package com.cours.clientleger.Controller.Sign_up;
 
 import com.cours.clientleger.Controller.Sign_in.Sign_inController;
-import com.cours.clientleger.Controller.Utils.DatabaseUtils;
+import com.cours.clientleger.Utils.DatabaseUtils;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;

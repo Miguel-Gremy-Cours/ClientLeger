@@ -1,6 +1,6 @@
 package com.cours.clientleger.Controller.Internautes;
 
-import com.cours.clientleger.Controller.Utils.DatabaseUtils;
+import com.cours.clientleger.Utils.DatabaseUtils;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;

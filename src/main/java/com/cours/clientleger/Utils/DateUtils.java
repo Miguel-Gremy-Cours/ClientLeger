@@ -1,4 +1,4 @@
-package com.cours.clientleger.Controller.Utils;
+package com.cours.clientleger.Utils;
 
 import org.springframework.stereotype.Component;
 
