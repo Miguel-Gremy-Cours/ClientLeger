@@ -1,5 +1,6 @@
 package com.cours.clientleger.Controller.Internautes;
 
+import com.cours.clientleger.Application.Internautes.Update.InternautesUpdateHandler;
 import com.cours.clientleger.Utils.DatabaseUtils;
 import com.cours.clientleger.Model.Page;
 
@@ -22,6 +23,8 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 public class InternautesController {
     @Autowired
     DatabaseUtils databaseUtils;
+    @Autowired
+    InternautesUpdateHandler internautesUpdateHandler;
 
     @GetMapping("")
     public ModelAndView Profile(HttpSession httpSession) {
@@ -42,9 +45,9 @@ public class InternautesController {
     }
 
     @PostMapping("/modify/return")
-    public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) {
+    public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
         ModelAndView modelReturn;
-        if (databaseUtils.updateInDatabase(data, httpSession) != null) {
+        if (internautesUpdateHandler.UpdateInternautes(data, httpSession)) {
             modelReturn = Profile(httpSession);
         } else {
             modelReturn = Modify(httpSession);

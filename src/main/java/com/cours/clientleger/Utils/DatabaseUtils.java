@@ -1,6 +1,6 @@
 package com.cours.clientleger.Utils;
 
-import com.cours.clientleger.Application.Internautes.InternautesValidatorGetProblem;
+import com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorGetProblem;
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
 import com.cours.clientleger.Model.Database.Internautes;
 
@@ -13,7 +13,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import static com.cours.clientleger.Utils.DateUtils.stringToLocalDate;
-import static com.cours.clientleger.Application.Internautes.InternautesValidatorIsSet.*;
+import static com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorIsSet.*;
 
 @Component
 public class DatabaseUtils {

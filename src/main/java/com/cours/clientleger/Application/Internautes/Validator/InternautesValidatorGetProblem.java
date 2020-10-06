@@ -1,5 +1,6 @@
-package com.cours.clientleger.Application.Internautes;
+package com.cours.clientleger.Application.Internautes.Validator;
 
+import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
 import com.cours.clientleger.Model.Database.Internautes;
 import com.cours.clientleger.Model.Enum.ProblemEnum;
 

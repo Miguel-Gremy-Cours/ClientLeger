@@ -1,4 +1,4 @@
-package com.cours.clientleger.Application.Internautes;
+package com.cours.clientleger.Application.Internautes.Validator;
 
 import com.cours.clientleger.Model.Database.Internautes;
 import org.apache.commons.validator.routines.EmailValidator;

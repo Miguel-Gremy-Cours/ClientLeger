@@ -1,4 +1,4 @@
-package com.cours.clientleger.Application.Internautes;
+package com.cours.clientleger.Application.Internautes.Validator;
 
 import java.util.Map;
 

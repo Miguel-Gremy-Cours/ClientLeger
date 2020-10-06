@@ -2,7 +2,7 @@ package com.cours.clientleger.Application.Internautes.Create;
 
 import com.cours.clientleger.Application.Internautes.InternautesCreateInstance;
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
-import com.cours.clientleger.Application.Internautes.InternautesValidatorGetProblem;
+import com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorGetProblem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 public class InternautesCreateHandler {
     @Autowired
     InternautesCreateRequest internautesCreateRequest;
+    @Autowired
+    InternautesCreateInstance internautesCreateInstance;
 
     public boolean CreateInternautes(Map<String, String> data, HttpSession httpSession) throws Exception {
         boolean succes = true;
@@ -31,7 +33,7 @@ public class InternautesCreateHandler {
                 problems.add(InternautesExceptionEnum.EMAIL_USED.getFName());
                 httpSession.setAttribute("problems", problems);
             } else if (e.getMessage().equals(InternautesExceptionEnum.INCORRECT_VALUES.getFName())) {
-                problems = InternautesValidatorGetProblem.getProblem(new InternautesCreateInstance().CreateInternautes(data));
+                problems = InternautesValidatorGetProblem.getProblem(internautesCreateInstance.CreateInternautes(data));
                 httpSession.setAttribute("problems", problems);
             } else if (e.getMessage().equals(InternautesExceptionEnum.DATA_EMPTY.getFName())) {
                 problems.add(InternautesExceptionEnum.DATA_EMPTY.getFName());

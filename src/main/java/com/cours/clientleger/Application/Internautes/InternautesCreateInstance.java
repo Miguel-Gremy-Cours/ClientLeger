@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 import static com.cours.clientleger.Utils.DateUtils.stringToLocalDate;
-import static com.cours.clientleger.Application.Internautes.InternautesValidatorIsEmpty.isEmpty;
+import static com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorIsEmpty.isEmpty;
 
 @Component
 public class InternautesCreateInstance {
