@@ -1,5 +1,5 @@
 <main class="row" xmlns:th="http://www.thymeleaf.org">
-    <form th:with='internaute=${#httpSession.getAttribute("Internautes")}'
+    <form th:with='data=${#httpSession.getAttribute("data")}'
           class="col d-flex align-items-left flex-column mb-3"
           method="post" action="/profile/modify/return">
         <div th:with='problems=${#httpSession.getAttribute("problems")}'>
@@ -12,34 +12,34 @@
             <label for="nom">Last name</label>
             <input type="text" class="form-control" id="nom"
                    placeholder="Enter login" name="nom"
-                   th:value="${internaute.getNom()}">
+                   th:value='${data.get("nom")}'>
         </div>
         <div class="form-group">
             <label for="prenom">First name</label>
             <input type="text" class="form-control" id="prenom"
                    placeholder="Enter login" name="prenom"
-                   th:value="${internaute.getPrenom()}">
+                   th:value='${data.get("prenom")}'>
         </div>
 
         <div class="form-group date">
             <label for="date_naissance">Birth date</label>
             <input type="text" class="form-control"
                    id="date_naissance" name="date_naissance"
-                   th:value="${internaute.getDate_naissance()}">
+                   th:value='${data.get("date_naissance")}'>
             <span class="input-group-addon">
             <i class="glyphicon glyphicon-th"></i></span>
         </div>
 
-        <div th:with="civilite=${internaute.getCivilite()}"
+        <div th:with='civilite=${data.get("civilite")}'
              class="form-group">
             <div class="form-check form-check">
                 <input class="form-check-input" type="radio" id="check_box_civility_male"
-                       name="civility" value="male" th:checked="${civilite == 1}">
+                       name="civility" value="male" th:checked="${civilite == '1'}">
                 <label class="form-check-label" for="check_box_civility_male">Male</label>
             </div>
             <div class="form-check form-check">
                 <input class="form-check-input" type="radio" id="check_box_civility_female"
-                       name="civility" value="female" th:checked="${civilite == 2}">
+                       name="civility" value="female" th:checked="${civilite == '2'}">
                 <label class="form-check-label" for="check_box_civility_female">Female</label>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <label for="login">Login</label>
             <input type="text" class="form-control" id="login"
                    placeholder="Enter login" name="login" aria-describedby="loginHelp"
-                   th:value="${internaute.getLogin()}">
+                   th:value='${data.get("login")}'>
             <small id="loginHelp" class="form-text text-muted">We'll
                 never share your login with anyone else.</small>
         </div>
@@ -70,7 +70,7 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email"
                    placeholder="Enter email" name="email"
-                   th:value="${internaute.getEmail()}">
+                   th:value='${data.get("email")}'>
         </div>
 
         <button type="submit" class="btn btn-primary">Modify account</button>

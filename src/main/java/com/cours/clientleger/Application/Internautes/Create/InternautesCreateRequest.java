@@ -1,6 +1,5 @@
 package com.cours.clientleger.Application.Internautes.Create;
 
-import com.cours.clientleger.Application.Internautes.InternautesCreateInstance;
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
 import com.cours.clientleger.Model.Database.Internautes;
 

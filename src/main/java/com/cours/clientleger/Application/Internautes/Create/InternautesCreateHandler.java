@@ -1,6 +1,5 @@
 package com.cours.clientleger.Application.Internautes.Create;
 
-import com.cours.clientleger.Application.Internautes.InternautesCreateInstance;
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
 import com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorGetProblem;
 
@@ -41,6 +40,7 @@ public class InternautesCreateHandler {
             }
             succes = false;
         }
+        httpSession.setAttribute("data", data);
         return succes;
     }
 }

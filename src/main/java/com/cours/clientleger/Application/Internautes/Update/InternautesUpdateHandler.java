@@ -1,7 +1,6 @@
 package com.cours.clientleger.Application.Internautes.Update;
 
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
-import com.cours.clientleger.Application.Internautes.InternautesUpdateInstance;
 import com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorGetProblem;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,7 @@ public class InternautesUpdateHandler {
         boolean succes = true;
         try {
             internautesUpdateRequest.UpdateInDatabaseRequest(data);
+            httpSession.setAttribute("data", data);
         } catch (Exception e) {
             List<String> problems = new ArrayList<>();
             if (e.getMessage().equals(InternautesExceptionEnum.INCORRECT_VALUES.getFName())) {

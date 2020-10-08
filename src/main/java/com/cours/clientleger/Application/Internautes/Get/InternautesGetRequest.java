@@ -1,7 +1,6 @@
 package com.cours.clientleger.Application.Internautes.Get;
 
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
-import com.cours.clientleger.Application.Internautes.InternautesGetInstance;
 import com.cours.clientleger.Model.Database.Internautes;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,15 @@ public class InternautesGetRequest {
     @Autowired
     InternautesGetResponse internautesGetResponse;
 
-    public void GetInDatabaseRequest(Map<String, String> data) throws Exception {
+    public Map<String, String> GetInDatabaseRequest(Map<String, String> data) throws Exception {
         Internautes internautes = internautesGetInstance.GetInternautes(data);
+        Map<String, String> dataOut;
         if (isSet(internautes)) {
-            internautesGetResponse.GetInDatabaseResponse(internautes);
+            dataOut = internautesGetResponse.GetInDatabaseResponse(internautes);
         } else {
             throw new Exception(InternautesExceptionEnum.INCORRECT_VALUES.getFName());
         }
+
+        return dataOut;
     }
 }

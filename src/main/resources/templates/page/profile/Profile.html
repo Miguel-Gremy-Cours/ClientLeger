@@ -1,31 +1,31 @@
 <main class="row" xmlns:th="http://www.thymeleaf.org">
-    <div th:with='internaute=${#httpSession.getAttribute("Internautes")}'
+    <div th:with='data=${#httpSession.getAttribute("data")}'
          class="col d-flex align-items-left flex-column mb-3">
         <div class="form-group">
             <label for="nom">Last name</label>
             <label type="text" class="form-control" id="nom"
                    placeholder="Enter login" name="nom"
-                   th:text="${internaute.getNom()}"></label>
+                   th:text='${data.get("nom")}'></label>
         </div>
         <div class="form-group">
             <label for="prenom">First name</label>
             <label type="text" class="form-control" id="prenom"
                    placeholder="Enter login" name="prenom"
-                   th:text="${internaute.getPrenom()}"></label>
+                   th:text='${data.get("login")}'></label>
         </div>
 
         <div class="form-group">
             <label for="date_naissance">Birth date</label>
             <label type="text" class="form-control" id="date_naissance"
                    name="date_naissance"
-                   th:text="${internaute.getDate_naissance()}"></label>
+                   th:text='${data.get("date_naissance")}'></label>
         </div>
 
         <div class="form-group">
             <label for="civilite">Civility</label>
             <label type="text" class="form-control" id="civilite"
                    name="civilite"
-                   th:text="${internaute.getCivilite() == 1} ? 'Male' : 'Female'"></label>
+                   th:text="${data.get('civilite') == '1'} ? 'Male' : 'Female'"></label>
         </div>
 
         <!-- Include Google link -->
@@ -36,7 +36,7 @@
             <label for="email">Email</label>
             <label type="text" class="form-control" id="email"
                    name="email"
-                   th:text="${internaute.getEmail()}"></label>
+                   th:text='${data.get("email")}'></label>
         </div>
     </div>
     <div class="col d-flex align-items-center flex-column mb-3 border border-secondary rounded">

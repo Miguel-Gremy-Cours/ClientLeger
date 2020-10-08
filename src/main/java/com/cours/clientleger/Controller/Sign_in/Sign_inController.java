@@ -2,8 +2,6 @@ package com.cours.clientleger.Controller.Sign_in;
 
 import com.cours.clientleger.Application.Internautes.Get.InternautesGetHandler;
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
-import com.cours.clientleger.Model.Database.Internautes;
-import com.cours.clientleger.Model.Enum.ProblemEnum;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;

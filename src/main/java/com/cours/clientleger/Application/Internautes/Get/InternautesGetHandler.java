@@ -1,7 +1,6 @@
 package com.cours.clientleger.Application.Internautes.Get;
 
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
-import com.cours.clientleger.Application.Internautes.InternautesGetInstance;
 import com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorGetProblem;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,13 @@ public class InternautesGetHandler {
 
     public boolean GetInternautes(Map<String, String> data, HttpSession httpSession) throws Exception {
         boolean succes = true;
+        String passwordClear = data.get("password");
         try {
-            internautesGetRequest.GetInDatabaseRequest(data);
+            data = internautesGetRequest.GetInDatabaseRequest(data);
+            httpSession.setAttribute("data", data);
+            httpSession.setAttribute("passwordClear", passwordClear);
+            httpSession.setAttribute("isLoged", true);
+            httpSession.removeAttribute("problems");
         } catch (Exception e) {
             List<String> problems = new ArrayList<>();
             if (e.getMessage().equals(InternautesExceptionEnum.INCORRECT_VALUES.getFName())) {

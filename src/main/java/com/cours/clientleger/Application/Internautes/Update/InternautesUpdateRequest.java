@@ -1,7 +1,6 @@
 package com.cours.clientleger.Application.Internautes.Update;
 
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
-import com.cours.clientleger.Application.Internautes.InternautesUpdateInstance;
 import com.cours.clientleger.Model.Database.Internautes;
 
 import org.springframework.beans.factory.annotation.Autowired;

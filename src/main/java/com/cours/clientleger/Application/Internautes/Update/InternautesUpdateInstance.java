@@ -1,5 +1,6 @@
-package com.cours.clientleger.Application.Internautes;
+package com.cours.clientleger.Application.Internautes.Update;
 
+import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
 import com.cours.clientleger.Model.Database.Internautes;
 

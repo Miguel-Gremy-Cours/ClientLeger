@@ -1,7 +1,6 @@
 package com.cours.clientleger.Controller.Sign_up;
 
 import com.cours.clientleger.Controller.Sign_in.Sign_inController;
-import com.cours.clientleger.Utils.DatabaseUtils;
 import com.cours.clientleger.Model.Page;
 import com.cours.clientleger.Application.Internautes.Create.InternautesCreateHandler;
 
@@ -22,8 +21,6 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @Controller
 @RequestMapping("/sign_up")
 public class Sign_upController {
-    @Autowired
-    DatabaseUtils databaseUtils;
     @Autowired
     InternautesCreateHandler internautesCreateHandler;
     Sign_inController sign_inController = new Sign_inController();
