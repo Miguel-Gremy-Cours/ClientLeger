@@ -1,5 +1,6 @@
 package com.cours.clientleger.Controller.Sign_in;
 
+import com.cours.clientleger.Application.Internautes.Get.InternautesGetHandler;
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
 import com.cours.clientleger.Model.Database.Internautes;
 import com.cours.clientleger.Model.Enum.ProblemEnum;
@@ -28,6 +29,8 @@ import com.cours.clientleger.Controller.IndexController;
 public class Sign_inController {
     @Autowired
     InternautesRepository internautesRepository;
+    @Autowired
+    InternautesGetHandler internautesGetHandler;
     IndexController indexController = new IndexController();
 
     @GetMapping()
@@ -41,22 +44,14 @@ public class Sign_inController {
 
 
     @PostMapping("/return")
-    public ModelAndView ReturnFromSign_in(@RequestParam Map<String, String> data, HttpSession httpSession) {
+    public ModelAndView ReturnFromSign_in(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
         ModelAndView modelReturn;
-        Internautes internautes;
-        //Check if user account exists in database
-        if (internautesRepository.existsByLoginAndPassword(data.get("login"), String.valueOf(data.get("password").hashCode()))) {
-            //Internautes object define on database return
-            internautes = internautesRepository.getByLoginAndPassword(data.get("login"), String.valueOf(data.get("password").hashCode()));
-            //Set session information internautes to get in web page
-            httpSession.setAttribute("passwordClear", data.get("password"));
-            httpSession.setAttribute("Internautes", internautes);
+        if (internautesGetHandler.GetInternautes(data, httpSession)) {
             modelReturn = indexController.Index(httpSession);
         } else {
-            //Set session error login to get in web page
-            httpSession.setAttribute("ErrorLogin", ProblemEnum.ERROR_LOGIN.getFName());
             modelReturn = Sign_in(httpSession);
         }
+
         return modelReturn;
     }
 }

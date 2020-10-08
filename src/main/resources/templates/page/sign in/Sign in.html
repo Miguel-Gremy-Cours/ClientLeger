@@ -1,4 +1,4 @@
-<main class="row">
+<main class="row" xmlns:th="http://www.thymeleaf.org">
     <form class="col d-flex align-items-left flex-column mb-3"
           method="post" action="/sign_in/return">
         <div class="form-group">
@@ -15,9 +15,11 @@
                 never share your password with anyone else.</small>
         </div>
 
-        <span th:if='${#httpSession.getAttribute("ErrorLogin") != null}'
-              class="text-danger mt-1" th:text='${#httpSession.getAttribute("ErrorLogin")}'>
-        </span>
+        <div th:with='problems=${#httpSession.getAttribute("problems")}'>
+            <div th:each="problem : ${problems}">
+                <span class="text-danger mt-1" th:text="${problem}"></span>
+            </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">Login</button>
     </form>

@@ -22,8 +22,6 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @RequestMapping("/profile")
 public class InternautesController {
     @Autowired
-    DatabaseUtils databaseUtils;
-    @Autowired
     InternautesUpdateHandler internautesUpdateHandler;
 
     @GetMapping("")
