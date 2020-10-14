@@ -36,6 +36,13 @@
                         <span class="text-muted ml-1">Profile</span>
                     </button>
                 </form>
+                <form th:if='${IsLoged}'
+                      action="/profile/logout" method="post">
+                    <button class="btn my-2 my-sm-0" type="submit">
+                        <i class="fa fa-sign-out"></i>
+                        <span class="text-muted ml-1">Log out</span>
+                    </button>
+                </form>
             </div>
         </div>
     </nav>

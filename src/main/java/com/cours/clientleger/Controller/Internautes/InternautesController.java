@@ -1,6 +1,8 @@
 package com.cours.clientleger.Controller.Internautes;
 
+import com.cours.clientleger.Application.Internautes.LogOut.InternautesLogOutHandler;
 import com.cours.clientleger.Application.Internautes.Update.InternautesUpdateHandler;
+import com.cours.clientleger.Controller.IndexController;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 public class InternautesController {
     @Autowired
     InternautesUpdateHandler internautesUpdateHandler;
+    @Autowired
+    InternautesLogOutHandler internautesLogOutHandler;
+    IndexController indexController = new IndexController();
 
     @GetMapping("")
     public ModelAndView Profile(HttpSession httpSession) {
@@ -49,6 +54,14 @@ public class InternautesController {
         } else {
             modelReturn = Modify(httpSession);
         }
+
+        return modelReturn;
+    }
+
+    @PostMapping("/logout")
+    public ModelAndView LogOut(HttpSession httpSession) {
+        internautesLogOutHandler.LogOut(httpSession);
+        ModelAndView modelReturn = indexController.Index(httpSession);
 
         return modelReturn;
     }
