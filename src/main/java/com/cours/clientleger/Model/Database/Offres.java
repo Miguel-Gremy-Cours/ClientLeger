@@ -147,4 +147,19 @@ public class Offres {
 
     //endregion
 
+    @Override
+    public String toString() {
+        return "id : " + id +
+                " | studio : " + studio +
+                " | intitule : " + intitule +
+                " | metier : " + metier +
+                " | contrat : " + contrat +
+                " | date_publication : " + date_publication +
+                " | dure_diffusion : " + dure_diffusion +
+                " | nombre_post : " + nombre_postes +
+                " | description_post : " + description_poste +
+                " | numero_employe : " + numero_employe +
+                " | localisation : " + localisation;
+    }
+
 }

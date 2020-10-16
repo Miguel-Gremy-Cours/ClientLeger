@@ -2,9 +2,11 @@ package com.cours.clientleger.Application.Internautes.Create;
 
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
 import com.cours.clientleger.Model.Database.Internautes;
+import com.google.common.hash.Hashing;
 
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import static com.cours.clientleger.Utils.DateUtils.stringToLocalDate;
@@ -29,7 +31,7 @@ public class InternautesCreateInstance {
                     civilite,
                     null,
                     data.get("login"),
-                    String.valueOf(data.get("password").hashCode()),
+                    Hashing.sha256().hashString(data.get("password"), StandardCharsets.UTF_8).toString(),
                     null,
                     data.get("email")
             );

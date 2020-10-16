@@ -4,5 +4,8 @@ import com.cours.clientleger.Model.Database.Offres;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface OffresRepository extends CrudRepository<Offres, Integer> {
+import java.util.List;
+
+public interface OffresRepository extends CrudRepository<Offres, Long> {
+    Offres getById(long id);
 }

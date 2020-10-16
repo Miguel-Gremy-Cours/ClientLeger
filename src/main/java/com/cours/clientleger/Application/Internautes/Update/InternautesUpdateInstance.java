@@ -3,10 +3,13 @@ package com.cours.clientleger.Application.Internautes.Update;
 import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
 import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
 import com.cours.clientleger.Model.Database.Internautes;
+import com.google.common.hash.Hashing;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.Map;
 
 import static com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorIsEmpty.isEmpty;
@@ -21,7 +24,7 @@ public class InternautesUpdateInstance {
         if (isEmpty(data)) {
             throw new Exception(InternautesExceptionEnum.DATA_EMPTY.getFName());
         } else {
-            Internautes internautes = internautesRepository.getByLoginAndPassword(data.get("login"), String.valueOf(data.get("password").hashCode()));
+            Internautes internautes = internautesRepository.getByLoginAndPassword(data.get("login"), Hashing.sha256().hashString(data.get("password"), StandardCharsets.UTF_8).toString());
             int civilite = 0;
             if (data.get("civility").equals("male")) {
                 civilite = 1;
@@ -34,7 +37,7 @@ public class InternautesUpdateInstance {
             internautes.setCivilite(civilite);
             internautes.setLien_google(null);
             internautes.setLogin(data.get("login"));
-            internautes.setPassword(String.valueOf(data.get("password").hashCode()));
+            internautes.setPassword(Hashing.sha256().hashString(data.get("password"), StandardCharsets.UTF_8).toString());
             internautes.setCv_name(null);
             internautes.setEmail(data.get("email"));
             return internautes;
