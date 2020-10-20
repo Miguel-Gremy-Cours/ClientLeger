@@ -2,7 +2,7 @@ package com.cours.clientleger.Application.Internautes.Validator;
 
 import java.util.Map;
 
-public class InternautesValidatorIsEmpty {
+public class InternauteValidatorIsEmpty {
     public static boolean isEmpty(Map<String, String> data) {
         boolean isEmpty = false;
         int size = data.size();

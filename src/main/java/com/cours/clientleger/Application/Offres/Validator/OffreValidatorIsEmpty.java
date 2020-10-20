@@ -2,7 +2,7 @@ package com.cours.clientleger.Application.Offres.Validator;
 
 import java.util.Map;
 
-public class OffresValidatorIsEmpty {
+public class OffreValidatorIsEmpty {
 
     public static boolean isEmpty(Map<String, String> data) {
         boolean isEmpty = false;

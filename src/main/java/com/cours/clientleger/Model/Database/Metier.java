@@ -1,5 +1,8 @@
 package com.cours.clientleger.Model.Database;
 
+
+import org.springframework.data.relational.core.mapping.Table;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,18 +10,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Table
 public class Metier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private long id;
-    @Column(name = "libelle")
+    @Column(name = "Libelle")
     private String libelle;
-    @Column(name = "domaine_metier")
-    private long domaine_metier;
+    @Column(name = "IdDomaineMetier")
+    private long idDomaineMetier;
 
-    //region Getters Setters
 
     public long getId() {
         return id;
@@ -38,14 +40,12 @@ public class Metier {
     }
 
 
-    public long getDomaine_metier() {
-        return domaine_metier;
+    public long getIdDomaineMetier() {
+        return idDomaineMetier;
     }
 
-    public void setDomaine_metier(long domaineMetier) {
-        this.domaine_metier = domaineMetier;
+    public void setIdDomaineMetier(long idDomaineMetier) {
+        this.idDomaineMetier = idDomaineMetier;
     }
-
-    //endregion
 
 }

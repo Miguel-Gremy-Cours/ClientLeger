@@ -2,7 +2,7 @@ package com.cours.clientleger.Controller.Sign_up;
 
 import com.cours.clientleger.Controller.Sign_in.Sign_inController;
 import com.cours.clientleger.Model.Page;
-import com.cours.clientleger.Application.Internautes.Create.InternautesCreateHandler;
+import com.cours.clientleger.Application.Internautes.Create.InternauteCreateHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @RequestMapping("/sign_up")
 public class Sign_upController {
     @Autowired
-    InternautesCreateHandler internautesCreateHandler;
+    InternauteCreateHandler internauteCreateHandler;
     Sign_inController sign_inController = new Sign_inController();
 
     @GetMapping("/new")
@@ -37,7 +37,7 @@ public class Sign_upController {
     @PostMapping("/return")
     public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
         ModelAndView modelReturn;
-        if (internautesCreateHandler.CreateInternautes(data, httpSession)) {
+        if (internauteCreateHandler.CreateInternautes(data, httpSession)) {
             modelReturn = sign_inController.Sign_in(httpSession);
         } else {
             modelReturn = Sign_up(httpSession);

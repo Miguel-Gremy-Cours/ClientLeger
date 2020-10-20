@@ -1,35 +1,45 @@
 package com.cours.clientleger.Model.Database;
 
+
+import org.springframework.data.relational.core.mapping.Table;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
+@Entity
 @Table
-public class Studios {
+public class Partenaire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private long id;
-    @Column(name = "siret")
+    @Column(name = "Siret")
     private String siret;
-    @Column(name = "adresse")
+    @Column(name = "Adresse")
     private String adresse;
-    @Column(name = "numero_adresse")
-    private long numero_adresse;
-    @Column(name = "libelle")
+    @Column(name = "NumeroAdresse")
+    private long numeroAdresse;
+    @Column(name = "Libelle")
     private String libelle;
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
-    @Column(name = "telephone")
+    @Column(name = "Telephone")
     private String telephone;
+    @Column(name = "Login")
+    private String login;
+    @Column(name = "Password")
+    private String password;
 
-    //region Getters Setters
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
 
@@ -51,12 +61,12 @@ public class Studios {
     }
 
 
-    public long getNumero_adresse() {
-        return numero_adresse;
+    public long getNumeroAdresse() {
+        return numeroAdresse;
     }
 
-    public void setNumero_adresse(long numero_adresse) {
-        this.numero_adresse = numero_adresse;
+    public void setNumeroAdresse(long numeroAdresse) {
+        this.numeroAdresse = numeroAdresse;
     }
 
 
@@ -86,6 +96,22 @@ public class Studios {
         this.telephone = telephone;
     }
 
-    //endregion
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }

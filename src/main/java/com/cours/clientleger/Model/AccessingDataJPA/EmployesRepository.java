@@ -1,8 +1,8 @@
 package com.cours.clientleger.Model.AccessingDataJPA;
 
-import com.cours.clientleger.Model.Database.Employes;
+import com.cours.clientleger.Model.Database.Employe;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface EmployesRepository extends CrudRepository<Employes, Integer> {
+public interface EmployesRepository extends CrudRepository<Employe, Integer> {
 }

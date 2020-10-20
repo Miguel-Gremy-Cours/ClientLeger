@@ -1,7 +1,7 @@
 package com.cours.clientleger.Application.Internautes.Create;
 
-import com.cours.clientleger.Application.Internautes.InternautesExceptionEnum;
-import com.cours.clientleger.Model.Database.Internautes;
+import com.cours.clientleger.Application.Internautes.InternauteExceptionEnum;
+import com.cours.clientleger.Model.Database.Internaute;
 import com.google.common.hash.Hashing;
 
 import org.springframework.stereotype.Component;
@@ -10,13 +10,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import static com.cours.clientleger.Utils.DateUtils.stringToLocalDate;
-import static com.cours.clientleger.Application.Internautes.Validator.InternautesValidatorIsEmpty.isEmpty;
+import static com.cours.clientleger.Application.Internautes.Validator.InternauteValidatorIsEmpty.isEmpty;
 
 @Component
-public class InternautesCreateInstance {
-    public Internautes CreateInternautes(Map<String, String> data) throws Exception {
+public class InternauteCreateInstance {
+    public Internaute CreateInternautes(Map<String, String> data) throws Exception {
         if (isEmpty(data)) {
-            throw new Exception(InternautesExceptionEnum.DATA_EMPTY.getFName());
+            throw new Exception(InternauteExceptionEnum.DATA_EMPTY.getFName());
         } else {
             int civilite = 0;
             if (data.get("civility").equals("male")) {
@@ -24,7 +24,7 @@ public class InternautesCreateInstance {
             } else if (data.get("civility").equals("female")) {
                 civilite = 2;
             }
-            Internautes internautes = new Internautes(
+            Internaute internautes = new Internaute(
                     data.get("nom"),
                     data.get("prenom"),
                     stringToLocalDate(data.get("date_naissance")),

@@ -1,5 +1,7 @@
 package com.cours.clientleger.Model.Database;
 
+import org.springframework.data.relational.core.mapping.Table;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,29 +9,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Employes {
+@Table
+public class Employe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private long id;
-    @Column(name = "nom")
+    @Column(name = "Nom")
     private String nom;
-    @Column(name = "prenom")
+    @Column(name = "Prenom")
     private String prenom;
-    @Column(name = "civilite")
-    private long civilite;
-    @Column(name = "groupe_employes")
-    private long groupe_employes;
-    @Column(name = "login")
+    @Column(name = "IdCivilite")
+    private long idCivilite;
+    @Column(name = "IdGroupeEmployes")
+    private long idGroupeEmployes;
+    @Column(name = "Login")
     private String login;
-    @Column(name = "password")
+    @Column(name = "Password")
     private String password;
 
-    //region Getters Setters
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
 
@@ -51,21 +56,21 @@ public class Employes {
     }
 
 
-    public long getCivilite() {
-        return civilite;
+    public long getIdCivilite() {
+        return idCivilite;
     }
 
-    public void setCivilite(long civilite) {
-        this.civilite = civilite;
+    public void setIdCivilite(long idCivilite) {
+        this.idCivilite = idCivilite;
     }
 
 
-    public long getGroupe_employes() {
-        return groupe_employes;
+    public long getIdGroupeEmployes() {
+        return idGroupeEmployes;
     }
 
-    public void setGroupe_employes(long groupeEmployes) {
-        this.groupe_employes = groupeEmployes;
+    public void setIdGroupeEmployes(long idGroupeEmployes) {
+        this.idGroupeEmployes = idGroupeEmployes;
     }
 
 
@@ -85,7 +90,5 @@ public class Employes {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    //endregion
 
 }

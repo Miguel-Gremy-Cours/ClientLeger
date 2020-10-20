@@ -1,7 +1,7 @@
 package com.cours.clientleger.Controller.Internautes;
 
-import com.cours.clientleger.Application.Internautes.LogOut.InternautesLogOutHandler;
-import com.cours.clientleger.Application.Internautes.Update.InternautesUpdateHandler;
+import com.cours.clientleger.Application.Internautes.LogOut.InternauteLogOutHandler;
+import com.cours.clientleger.Application.Internautes.Update.InternauteUpdateHandler;
 import com.cours.clientleger.Controller.IndexController;
 import com.cours.clientleger.Model.Page;
 
@@ -23,9 +23,9 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @RequestMapping("/profile")
 public class InternautesController {
     @Autowired
-    InternautesUpdateHandler internautesUpdateHandler;
+    InternauteUpdateHandler internauteUpdateHandler;
     @Autowired
-    InternautesLogOutHandler internautesLogOutHandler;
+    InternauteLogOutHandler internauteLogOutHandler;
     IndexController indexController = new IndexController();
 
     @GetMapping("")
@@ -49,7 +49,7 @@ public class InternautesController {
     @PostMapping("/modify/return")
     public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
         ModelAndView modelReturn;
-        if (internautesUpdateHandler.UpdateInternautes(data, httpSession)) {
+        if (internauteUpdateHandler.UpdateInternautes(data, httpSession)) {
             modelReturn = Profile(httpSession);
         } else {
             modelReturn = Modify(httpSession);
@@ -60,7 +60,7 @@ public class InternautesController {
 
     @PostMapping("/logout")
     public ModelAndView LogOut(HttpSession httpSession) {
-        internautesLogOutHandler.LogOut(httpSession);
+        internauteLogOutHandler.LogOut(httpSession);
         ModelAndView modelReturn = indexController.Index(httpSession);
 
         return modelReturn;

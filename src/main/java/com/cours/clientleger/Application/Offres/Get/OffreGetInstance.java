@@ -2,7 +2,7 @@ package com.cours.clientleger.Application.Offres.Get;
 
 import com.cours.clientleger.Application.Offres.PostsExceptionEnum;
 import com.cours.clientleger.Model.AccessingDataJPA.OffresRepository;
-import com.cours.clientleger.Model.Database.Offres;
+import com.cours.clientleger.Model.Database.Offre;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
-import static com.cours.clientleger.Application.Offres.Validator.OffresValidatorIsEmpty.isEmpty;
+import static com.cours.clientleger.Application.Offres.Validator.OffreValidatorIsEmpty.isEmpty;
 
 @Component
-public class OffresGetInstance {
+public class OffreGetInstance {
     @Autowired
     OffresRepository offresRepository;
 
-    public Offres GetOffres(Map<String, String> data) throws Exception {
+    public Offre GetOffres(Map<String, String> data) throws Exception {
         if (isEmpty(data)) {
             throw new Exception(PostsExceptionEnum.ID_EMPTY.getFName());
         } else {
@@ -25,8 +25,8 @@ public class OffresGetInstance {
         }
     }
 
-    public List<Offres> GetOffresList() {
-        return (List<Offres>) offresRepository.findAll();
+    public List<Offre> GetOffresList() {
+        return (List<Offre>) offresRepository.findAll();
     }
 
 }

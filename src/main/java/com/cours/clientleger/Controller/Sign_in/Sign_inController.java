@@ -1,7 +1,7 @@
 package com.cours.clientleger.Controller.Sign_in;
 
-import com.cours.clientleger.Application.Internautes.Get.InternautesGetHandler;
-import com.cours.clientleger.Model.AccessingDataJPA.InternautesRepository;
+import com.cours.clientleger.Application.Internautes.Get.InternauteGetHandler;
+import com.cours.clientleger.Model.AccessingDataJPA.InternauteRepository;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,9 @@ import com.cours.clientleger.Controller.IndexController;
 @RequestMapping("/sign_in")
 public class Sign_inController {
     @Autowired
-    InternautesRepository internautesRepository;
+    InternauteRepository internauteRepository;
     @Autowired
-    InternautesGetHandler internautesGetHandler;
+    InternauteGetHandler internauteGetHandler;
     IndexController indexController = new IndexController();
 
     @GetMapping()
@@ -44,7 +44,7 @@ public class Sign_inController {
     @PostMapping("/return")
     public ModelAndView ReturnFromSign_in(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
         ModelAndView modelReturn;
-        if (internautesGetHandler.GetInternautes(data, httpSession)) {
+        if (internauteGetHandler.GetInternautes(data, httpSession)) {
             modelReturn = indexController.Index(httpSession);
         } else {
             modelReturn = Sign_in(httpSession);

@@ -1,11 +1,9 @@
 package com.cours.clientleger.Model.AccessingDataJPA;
 
-import com.cours.clientleger.Model.Database.Offres;
+import com.cours.clientleger.Model.Database.Offre;
 
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
-public interface OffresRepository extends CrudRepository<Offres, Long> {
-    Offres getById(long id);
+public interface OffresRepository extends CrudRepository<Offre, Long> {
+    Offre getById(long id);
 }

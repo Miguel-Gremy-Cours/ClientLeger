@@ -1,6 +1,6 @@
 package com.cours.clientleger.Application.Internautes;
 
-public enum InternautesExceptionEnum {
+public enum InternauteExceptionEnum {
     LAST_NAME("Last name is empty"),
     FIRST_NAME("First name is empty"),
     CIVILITE("Civility is not correct"),
@@ -18,7 +18,7 @@ public enum InternautesExceptionEnum {
 
     private String FName;
 
-    InternautesExceptionEnum(String FName) {
+    InternauteExceptionEnum(String FName) {
         this.FName = FName;
     }
 
