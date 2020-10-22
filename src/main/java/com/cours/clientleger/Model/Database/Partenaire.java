@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Partenaire {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "Siret")
     private String siret;

@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Contrat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "IdTypeContrat")
     private long idTypeContrat;

@@ -24,7 +24,7 @@ public class InternauteCreateInstance {
             } else if (data.get("civility").equals("female")) {
                 civilite = 2;
             }
-            Internaute internautes = new Internaute(
+            Internaute internaute = new Internaute(
                     data.get("nom"),
                     data.get("prenom"),
                     stringToLocalDate(data.get("date_naissance")),
@@ -35,7 +35,7 @@ public class InternauteCreateInstance {
                     null,
                     data.get("email")
             );
-            return internautes;
+            return internaute;
         }
     }
 }

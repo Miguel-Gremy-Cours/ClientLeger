@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Employe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "Nom")
     private String nom;

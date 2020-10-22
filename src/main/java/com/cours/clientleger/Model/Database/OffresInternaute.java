@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class OffresInternaute {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idInternaute;
     @Column(name = "IdOffre")
     private long idOffre;

@@ -19,8 +19,8 @@ public class InternauteCreateResponse {
     public void CreateInDatabaseResponse(Map<String, String> data) throws Exception {
         if (!internauteRepository.existsByEmail(data.get("email"))) {
             if (!internauteRepository.existsByLogin(data.get("login"))) {
-                Internaute internautes = internauteCreateInstance.CreateInternautes(data);
-                internauteRepository.save(internautes);
+                Internaute internaute = internauteCreateInstance.CreateInternautes(data);
+                internauteRepository.save(internaute);
             } else {
                 throw new Exception(InternauteExceptionEnum.LOGIN_USED.getFName());
             }

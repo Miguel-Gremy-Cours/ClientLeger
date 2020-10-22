@@ -1,6 +1,5 @@
 package com.cours.clientleger.Model.Database;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -11,12 +10,13 @@ import javax.persistence.Id;
 
 import org.springframework.data.relational.core.mapping.Table;
 
-@Entity
+
+@Entity(name = "Internaute")
 @Table
 public class Internaute {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "Nom")
     private String nom;
