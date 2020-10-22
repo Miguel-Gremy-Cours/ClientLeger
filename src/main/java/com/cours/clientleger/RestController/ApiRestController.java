@@ -1,7 +1,6 @@
 package com.cours.clientleger.RestController;
 
 import com.cours.clientleger.Model.AccessingDataJPA.OffresRepository;
-import com.cours.clientleger.Model.DatabaseEntities.OffreEntity;
 import com.cours.clientleger.Model.Rest.RestOffre;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,31 +17,28 @@ public class ApiRestController {
     @Autowired
     OffresRepository offresRepository;
 
-    private Iterable<OffreEntity> offreIterable;
-    private List<RestOffre> offres = new ArrayList<>();
+    private final List<RestOffre> offres = new ArrayList<>();
 
     @GetMapping
     public Iterable<RestOffre> restOffre() {
-        Thread threadOffreAll = new Thread(() -> {
-            offreIterable = offresRepository.findAll();
-            for (OffreEntity offreEntity : offreIterable) {
-                RestOffre restOffre = new RestOffre();
-                restOffre
-                        .setId(offreEntity.getId())
-                        .setStudio(offreEntity.getStudioByIdStudio().getLibelle())
-                        .setIntitule(offreEntity.getIntitule())
-                        .setMetier(offreEntity.getMetierByIdMetier().getLibelle())
-                        .setDatePublication(offreEntity.getDatePublication())
-                        .setDureDiffusion(offreEntity.getDureDiffusion())
-                        .setNombrePostes(offreEntity.getNombrePostes())
-                        .setDescriptionPoste(offreEntity.getDescriptionPoste())
-                        .setDescriptionProfile(offreEntity.getDescriptionProfile())
-                        .setEmploye(offreEntity.getEmployeByIdEmploye().getNom())
-                        .setLocalisation(offreEntity.getLocalisation())
-                        .setCodeOffre(offreEntity.getCodeOffre());
-                offres.add(restOffre);
-            }
-        });
+        offres.clear();
+        Thread threadOffreAll = new Thread(() -> offresRepository.findAll().forEach(
+                offreEntity -> offres.add(
+                        new RestOffre()
+                                .setId(offreEntity.getId())
+                                .setStudio(offreEntity.getStudioByIdStudio().getLibelle())
+                                .setIntitule(offreEntity.getIntitule())
+                                .setMetier(offreEntity.getMetierByIdMetier().getLibelle())
+                                .setDatePublication(offreEntity.getDatePublication())
+                                .setDureDiffusion(offreEntity.getDureDiffusion())
+                                .setNombrePostes(offreEntity.getNombrePostes())
+                                .setDescriptionPoste(offreEntity.getDescriptionPoste())
+                                .setDescriptionProfile(offreEntity.getDescriptionProfile())
+                                .setEmploye(offreEntity.getEmployeByIdEmploye().getNom())
+                                .setLocalisation(offreEntity.getLocalisation())
+                                .setCodeOffre(offreEntity.getCodeOffre())
+                )
+        ));
         threadOffreAll.start();
         try {
             threadOffreAll.join();
