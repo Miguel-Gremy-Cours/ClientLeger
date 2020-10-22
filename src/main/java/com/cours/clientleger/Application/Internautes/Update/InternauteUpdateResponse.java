@@ -1,7 +1,7 @@
 package com.cours.clientleger.Application.Internautes.Update;
 
 import com.cours.clientleger.Model.AccessingDataJPA.InternauteRepository;
-import com.cours.clientleger.Model.Database.Internaute;
+import com.cours.clientleger.Model.DatabaseEntities.InternauteEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ public class InternauteUpdateResponse {
     InternauteUpdateInstance internauteUpdateInstance;
 
     public void UpdateInDatabaseResponse(Map<String, String> data) throws Exception {
-        Internaute internaute = internauteUpdateInstance.UpdateInternautes(data);
+        InternauteEntity internaute = internauteUpdateInstance.UpdateInternautes(data);
         internauteRepository.save(internaute);
     }
 }

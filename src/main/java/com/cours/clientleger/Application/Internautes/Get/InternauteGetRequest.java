@@ -1,7 +1,7 @@
 package com.cours.clientleger.Application.Internautes.Get;
 
 import com.cours.clientleger.Application.Internautes.InternauteExceptionEnum;
-import com.cours.clientleger.Model.Database.Internaute;
+import com.cours.clientleger.Model.DatabaseEntities.InternauteEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class InternauteGetRequest {
     InternauteGetResponse internauteGetResponse;
 
     public Map<String, String> GetInDatabaseRequest(Map<String, String> data) throws Exception {
-        Internaute internautes = internauteGetInstance.GetInternautes(data);
+        InternauteEntity internautes = internauteGetInstance.GetInternautes(data);
         Map<String, String> dataOut;
         if (isSet(internautes)) {
             dataOut = internauteGetResponse.GetInDatabaseResponse(internautes);

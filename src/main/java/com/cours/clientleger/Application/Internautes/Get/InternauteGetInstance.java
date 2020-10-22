@@ -2,7 +2,7 @@ package com.cours.clientleger.Application.Internautes.Get;
 
 import com.cours.clientleger.Application.Internautes.InternauteExceptionEnum;
 import com.cours.clientleger.Model.AccessingDataJPA.InternauteRepository;
-import com.cours.clientleger.Model.Database.Internaute;
+import com.cours.clientleger.Model.DatabaseEntities.InternauteEntity;
 import com.google.common.hash.Hashing;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class InternauteGetInstance {
     @Autowired
     InternauteRepository internauteRepository;
 
-    public Internaute GetInternautes(Map<String, String> data) throws Exception {
+    public InternauteEntity GetInternautes(Map<String, String> data) throws Exception {
         if (isEmpty(data)) {
             throw new Exception(InternauteExceptionEnum.DATA_EMPTY.getFName());
         } else {

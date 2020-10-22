@@ -1,7 +1,7 @@
 package com.cours.clientleger.Application.Internautes.Create;
 
 import com.cours.clientleger.Application.Internautes.InternauteExceptionEnum;
-import com.cours.clientleger.Model.Database.Internaute;
+import com.cours.clientleger.Model.DatabaseEntities.InternauteEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class InternauteCreateRequest {
     InternauteCreateResponse internauteCreateResponse;
 
     public void CreateInDatabaseRequest(Map<String, String> data) throws Exception {
-        Internaute internautes = internauteCreateInstance.CreateInternautes(data);
+        InternauteEntity internautes = internauteCreateInstance.CreateInternautes(data);
         if (isSet(internautes)) {
             internauteCreateResponse.CreateInDatabaseResponse(data);
         } else {

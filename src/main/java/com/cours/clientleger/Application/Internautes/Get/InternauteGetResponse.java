@@ -1,7 +1,7 @@
 package com.cours.clientleger.Application.Internautes.Get;
 
 import com.cours.clientleger.Model.AccessingDataJPA.InternauteRepository;
-import com.cours.clientleger.Model.Database.Internaute;
+import com.cours.clientleger.Model.DatabaseEntities.InternauteEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ public class InternauteGetResponse {
     @Autowired
     InternauteGetInstance internauteGetInstance;
 
-    public Map<String, String> GetInDatabaseResponse(Internaute internaute) {
+    public Map<String, String> GetInDatabaseResponse(InternauteEntity internaute) {
         internauteRepository.save(internaute);
 
         Map<String, String> dataOut = new HashMap<>();

@@ -1,7 +1,7 @@
 package com.cours.clientleger.Application.Internautes.Validator;
 
 import com.cours.clientleger.Application.Internautes.InternauteExceptionEnum;
-import com.cours.clientleger.Model.Database.Internaute;
+import com.cours.clientleger.Model.DatabaseEntities.InternauteEntity;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
@@ -12,7 +12,7 @@ import java.util.List;
 import static java.util.Objects.isNull;
 
 public class InternauteValidatorGetProblem {
-    public static List<String> getProblem(Internaute internautes) {
+    public static List<String> getProblem(InternauteEntity internautes) {
         List<String> problems = new ArrayList<>();
         if (internautes != null) {
             if (internautes.getNom().equals("")) {

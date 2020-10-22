@@ -1,14 +1,13 @@
 package com.cours.clientleger.Application.Internautes.Validator;
 
-import com.cours.clientleger.Model.Database.Internaute;
+import com.cours.clientleger.Model.DatabaseEntities.InternauteEntity;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class InternauteValidatorIsSet {
-    public static boolean isSet(Internaute internautes) {
+    public static boolean isSet(InternauteEntity internautes) {
         boolean isSet = true;
         if (internautes != null) {
             if (internautes.getNom().equals("")) {
