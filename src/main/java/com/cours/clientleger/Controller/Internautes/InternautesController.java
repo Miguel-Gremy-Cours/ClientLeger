@@ -30,18 +30,18 @@ public class InternautesController {
 
     @GetMapping("")
     public ModelAndView Profile(HttpSession httpSession) {
-        Page page = new Page();
-        page.setTitle("Profile");
-        page.setPagePath("page/profile/Profile");
+        Page page = new Page().
+                setTitle("Profile")
+                .setPagePath("page/profile/Profile");
 
         return refresh(page);
     }
 
     @GetMapping("/modify")
     public ModelAndView Modify(HttpSession httpSession) {
-        Page page = new Page();
-        page.setTitle("Modify");
-        page.setPagePath("page/profile/Modify");
+        Page page = new Page().
+                setTitle("Modify")
+                .setPagePath("page/profile/Modify");
 
         return refresh(page);
     }

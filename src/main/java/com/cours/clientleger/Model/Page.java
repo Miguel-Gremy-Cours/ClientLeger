@@ -11,16 +11,18 @@ public class Page {
         return title;
     }
 
-    public void setTitle(String title) {
+    public Page setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getPagePath() {
         return pagePath;
     }
 
-    public void setPagePath(String pagePath) {
+    public Page setPagePath(String pagePath) {
         this.pagePath = pagePath;
+        return this;
     }
 
     //endregion

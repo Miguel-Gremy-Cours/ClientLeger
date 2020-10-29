@@ -16,9 +16,9 @@ public class IndexController {
 
     @GetMapping()
     public ModelAndView Index(HttpSession httpSession) {
-        Page page = new Page();
-        page.setTitle("Home");
-        page.setPagePath("page/home/Home");
+        Page page = new Page()
+                .setTitle("Home")
+                .setPagePath("page/home/Home");
 
         return refresh(page);
     }

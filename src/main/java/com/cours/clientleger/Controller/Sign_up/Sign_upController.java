@@ -27,9 +27,9 @@ public class Sign_upController {
 
     @GetMapping("/new")
     public ModelAndView Sign_up(HttpSession httpSession) {
-        Page page = new Page();
-        page.setTitle("Sign up");
-        page.setPagePath("page/sign up/Sign up");
+        Page page = new Page()
+                .setTitle("Sign up")
+                .setPagePath("page/sign up/Sign up");
 
         return refresh(page);
     }

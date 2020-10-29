@@ -1,0 +1,45 @@
+<main xmlns:th="http://www.thymeleaf.org"
+      th:with='offresList=${#httpSession.getAttribute("offresList")}'>
+
+    <div class="filtre">
+
+    </div>
+
+    <form class="recherche">
+
+    </form>
+
+    <div class="d-flex flex-column align-items-center flex-fill">
+
+        <div class="offres d-flex flex-column"
+             th:each="offresInList : ${offresList}">
+            <!--/*@thymesVar id="offresInList" type="com.cours.clientleger.Model.DatabaseEntities.OffreEntity"*/-->
+            <h4 class="up text-sm-left text-dark"
+                th:text="${offresInList.getIntitule()}"></h4>
+            <HR>
+
+            <div class="down d-flex flex-row">
+                <div class="left d-flex flex-column">
+                    <p class="component"
+                       th:text='${offresInList.getStudioByIdStudio().getLibelle()}'></p>
+                    <p class="component"
+                       th:text='${offresInList.getMetierByIdMetier().getLibelle()}'></p>
+                    <p class="component"
+                       th:text='${offresInList.getNombrePostes()}'></p>
+                    <p class="component"
+                       th:text='${offresInList.getDatePublication()}'></p>
+                </div>
+
+                <div class="right d-flex flex-column">
+                    <p class="component" th:text="${offresInList.getDescriptionPoste()}"></p>
+                    <p class="component" th:text="${offresInList.getDescriptionProfile()}"></p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</main>
+

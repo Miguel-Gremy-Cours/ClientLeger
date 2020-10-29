@@ -1,0 +1,21 @@
+.offres {
+    border: solid #000000 1pt;
+    padding-bottom: 10pt;
+}
+
+.offres.up {
+    padding-bottom: 3.25pt;
+}
+
+.offres.down {
+    padding-top: 3.25pt;
+}
+
+.offres.down.left.component {
+    padding: 0.25pt;
+}
+
+.offres.down.right.component {
+    padding-top: 0.5pt;
+    padding-bottom: 0.5pt;
+}

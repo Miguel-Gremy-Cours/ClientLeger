@@ -33,9 +33,9 @@ public class Sign_inController {
 
     @GetMapping()
     public ModelAndView Sign_in(HttpSession httpSession) {
-        Page page = new Page();
-        page.setTitle("Sign in");
-        page.setPagePath("page/sign in/Sign in");
+        Page page = new Page()
+                .setTitle("Sign in")
+                .setPagePath("page/sign in/Sign in");
 
         return refresh(page);
     }

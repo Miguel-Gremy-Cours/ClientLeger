@@ -10,5 +10,7 @@ public class OffreGetRequest {
     OffreGetInstance offreGetInstance;
     @Autowired
     OffreGetResponse offreGetResponse;
-    
+
+
+
 }
