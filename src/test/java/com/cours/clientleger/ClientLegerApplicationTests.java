@@ -1,11 +1,11 @@
 package com.cours.clientleger;
 
+import com.cours.clientleger.Model.AccessingDataJPA.OffresRepository;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Controller;
-
-import com.cours.clientleger.Model.AccessingDataJPA.OffresRepository;
 
 @SpringBootTest
 @Controller

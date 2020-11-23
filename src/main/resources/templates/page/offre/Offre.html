@@ -1,31 +1,48 @@
 <main xmlns:th="http://www.thymeleaf.org"
       th:with='offre=${#httpSession.getAttribute("offre")},data=${#httpSession.getAttribute("data")}'>
 
-    <h2 th:text="${offre.getIntitule()}"></h2>
+    <div class="offreDetail">
 
-    <p th:text="${offre.getStudioByIdStudio().getLibelle()}"></p>
+        <div class="component">
+            <h2 id="offre-intitule" th:text="${offre.getIntitule()}"></h2>
+        </div>
+        <div class="component">
+            <label class="text text-muted" for="offre-studio">Studio : </label>
+            <p class="text" id="offre-studio"
+               th:text="${offre.getStudioByIdStudio().getLibelle()}"></p>
+        </div>
+        <div class="component">
+            <label class="text text-muted" for="offre-datePublication">Date de publication
+                : </label>
+            <p class="text" id="offre-datePublication" th:text="${offre.getDatePublication()}"></p>
+        </div>
+        <div class="component">
+            <label class="text text-muted" for="offre-nombrePoste">Nombres de postes : </label>
+            <p class="text" id="offre-nombrePoste" th:text="${offre.getNombrePostes()}"></p>
+        </div>
+        <div class="component">
+            <label class="text text-muted" for="offre-descriptionPoste">Description du poste
+                : </label>
+            <p class="text" id="offre-descriptionPoste"
+               th:text="${offre.getDescriptionPoste()}"></p>
+        </div>
+        <div class="component">
+            <label class="text text-muted" for="offre-descriptionProfile">Description du profile
+                : </label>
+            <p class="text" id="offre-descriptionProfile"
+               th:text="${offre.getDescriptionProfile()}"></p>
+        </div>
+        <div class="component">
+            <label class="text text-muted" for="offre-localisation">Localisation : </label>
+            <p class="text" id="offre-localisation" th:text="${offre.getLocalisation()}"></p>
+        </div>
 
-    <p th:text="${offre.getDatePublication()}"></p>
+        <form th:if='${#httpSession.getAttribute("isLoged")}'
+              th:action='${"/offre/postulate/" + offre.getId()}'
+              method="get">
+            <button class="btn btn-primary" type="submit">Postuler</button>
+        </form>
 
-    <p th:text="${offre.getDureDiffusion()}"></p>
-
-    <p th:text="${offre.getNombrePostes()}"></p>
-
-    <p th:text="${offre.getDescriptionPoste()}"></p>
-
-    <p th:text="${offre.getDescriptionProfile()}"></p>
-
-    <p th:text="${offre.getEmployeByIdEmploye().getNom()}"></p>
-
-    <p th:text="${offre.getLocalisation()}"></p>
-
-    <p th:text="${offre.getCodeOffre()}"></p>
-
-
-    <form th:action='${"/offre/postulate/" + offre.getId()}'
-          method="get">
-        <button type="submit">Postuler</button>
-    </form>
-
+    </div>
 
 </main>

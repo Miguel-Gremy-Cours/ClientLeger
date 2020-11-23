@@ -1,8 +1,8 @@
 package com.cours.clientleger.Controller.Sign_up;
 
+import com.cours.clientleger.Application.Internautes.Create.InternauteCreateHandler;
 import com.cours.clientleger.Controller.Sign_in.Sign_inController;
 import com.cours.clientleger.Model.Page;
-import com.cours.clientleger.Application.Internautes.Create.InternauteCreateHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

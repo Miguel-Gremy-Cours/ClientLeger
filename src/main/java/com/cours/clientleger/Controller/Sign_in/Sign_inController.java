@@ -1,6 +1,7 @@
 package com.cours.clientleger.Controller.Sign_in;
 
 import com.cours.clientleger.Application.Internautes.Get.InternauteGetHandler;
+import com.cours.clientleger.Controller.IndexController;
 import com.cours.clientleger.Model.AccessingDataJPA.InternauteRepository;
 import com.cours.clientleger.Model.Page;
 
@@ -12,14 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import static com.cours.clientleger.Controller.RefreshController.refresh;
-
-import com.cours.clientleger.Controller.IndexController;
 
 
 @Controller

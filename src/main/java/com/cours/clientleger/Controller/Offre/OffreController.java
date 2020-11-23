@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import static com.cours.clientleger.Controller.RefreshController.refresh;
-
 import javax.servlet.http.HttpSession;
+
+import static com.cours.clientleger.Controller.RefreshController.refresh;
 
 @Controller
 @RequestMapping("/offre")
