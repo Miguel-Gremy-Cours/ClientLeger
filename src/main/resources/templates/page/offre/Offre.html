@@ -1,9 +1,6 @@
 <main xmlns:th="http://www.thymeleaf.org"
-      th:with='offre=${#httpSession.getAttribute("offre")}, data=${#httpSession.getAttribute("data")}'>
+      th:with='offre=${#httpSession.getAttribute("offre")},data=${#httpSession.getAttribute("data")}'>
 
-    <!--th:with='offre=${#httpSession.getAttribute("offre")}'-->
-
-    <!--/*@thymesVar id="offre" type="com.cours.clientleger.Model.DatabaseEntities.OffreEntity"*/-->
     <h2 th:text="${offre.getIntitule()}"></h2>
 
     <p th:text="${offre.getStudioByIdStudio().getLibelle()}"></p>
@@ -24,8 +21,11 @@
 
     <p th:text="${offre.getCodeOffre()}"></p>
 
-    <form th:action='${"offre/postulate/" + data.get("id") + "/" + ${offre.getId()}}'>
+
+    <form th:action='${"/offre/postulate/" + offre.getId()}'
+          method="get">
         <button type="submit">Postuler</button>
     </form>
+
 
 </main>

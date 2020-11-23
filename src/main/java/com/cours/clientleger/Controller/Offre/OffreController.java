@@ -38,15 +38,15 @@ public class OffreController {
     public ModelAndView OffreDetail(@PathVariable int Id, HttpSession httpSession) {
         Page page = new Page()
                 .setPagePath("page/offre/Offre")
-                .setTitle("Offre" + Id);
+                .setTitle("Offre " + Id);
 
         offreGetHandler.GetOffre(Id, httpSession);
 
         return refresh(page);
     }
 
-    @GetMapping("/postulate/{IdInternaute}/{IdOffre}")
-    public ModelAndView OffrePostulate(@PathVariable int IdInternaute, @PathVariable int IdOffre, HttpSession httpSession) {
+    @GetMapping("/postulate/{IdOffre}")
+    public ModelAndView OffrePostulate(@PathVariable int IdOffre, HttpSession httpSession) {
         return indexController.Index(httpSession);
     }
 }

@@ -13,11 +13,10 @@ import java.util.Map;
 public class OffreGetInstance {
     @Autowired
     OffresRepository offresRepository;
-/*
-    public OffreEntity GetOffre(Map<String, String> data) {
-        return offresRepository.getById(Integer.parseInt(data.get("id")));
-    }
 
+    public OffreEntity GetOffre(int Id) {
+        return offresRepository.getById(Id);
+    }
 
     public List<OffreEntity> GetOffresList() {
         return (List<OffreEntity>) offresRepository.findAll();

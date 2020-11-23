@@ -15,7 +15,7 @@
              th:each="offresInList : ${offresList}">
 
             <h4 class="up text-sm-left">
-                <a th:href='${"offre/" + offresInList.getId()}'
+                <a th:href='${"/offre/" + offresInList.getId()}'
                    th:text='${offresInList.getIntitule()}'></a>
             </h4>
 
