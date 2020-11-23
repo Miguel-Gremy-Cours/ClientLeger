@@ -3,6 +3,10 @@ package com.cours.clientleger.Model.Rest;
 
 import java.sql.Date;
 
+/**
+ * This class is needed for the API to send the values of fields
+ * Instead of Identifier
+ */
 public class RestOffre {
     private int id;
     private String studio;
