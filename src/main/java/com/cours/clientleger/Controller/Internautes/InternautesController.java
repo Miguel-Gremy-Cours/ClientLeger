@@ -65,7 +65,7 @@ public class InternautesController {
      * @param data        Data from HTML with values of the Internaute get
      * @param httpSession Data in Http session
      * @return The correct ModelAndView if there are errors or not
-     * @throws Exception
+     * @throws Exception In file InternauteExceptionEnum
      */
     @PostMapping("/modify/return")
     public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {

@@ -15,8 +15,8 @@ public class InternauteValidatorGetProblem {
     /**
      * Function that get different problems if exists in the Internaute Object
      *
-     * @param internautes
-     * @return
+     * @param internautes Required Internaute to get errors in it
+     * @return List of String containing problems
      */
     public static List<String> getProblem(InternauteEntity internautes) {
         List<String> problems = new ArrayList<>();

@@ -63,7 +63,7 @@ public class OffreController {
      *
      * @param IdOffre     Selected Offre's Id
      * @param httpSession Data in Http session
-     * @return
+     * @return Index ModelAndView
      */
     @GetMapping("/postulate/{IdOffre}")
     public ModelAndView OffrePostulate(@PathVariable int IdOffre, HttpSession httpSession) {

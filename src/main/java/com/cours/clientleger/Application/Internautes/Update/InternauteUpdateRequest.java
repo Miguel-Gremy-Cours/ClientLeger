@@ -21,7 +21,7 @@ public class InternauteUpdateRequest {
      * Function that call other function to create the Internaute and update it in database
      *
      * @param data Data from HTML with values of the updated Internaute
-     * @throws Exception
+     * @throws Exception  In file InternauteExceptionEnum
      */
     public void UpdateInDatabaseRequest(Map<String, String> data) throws Exception {
         // Create new Internaute with the values of updated Internaute

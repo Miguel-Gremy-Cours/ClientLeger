@@ -23,7 +23,7 @@ public class InternauteGetInstance {
      *
      * @param data Data from HTML with values of the Internaute get
      * @return The Internaute information in Object (InternauteEntity)
-     * @throws Exception
+     * @throws Exception In file InternauteExceptionEnum
      */
     public InternauteEntity GetInternautes(Map<String, String> data) throws Exception {
         if (isEmpty(data)) {

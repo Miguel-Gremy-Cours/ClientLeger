@@ -26,7 +26,7 @@ public class InternauteGetHandler {
      * @param data        Data from HTML with values of the Internaute get
      * @param httpSession Data in Http session
      * @return If getting an Internaute finished or if there was errors
-     * @throws Exception
+     * @throws Exception In file InternauteExceptionEnum
      */
     public boolean GetInternautes(Map<String, String> data, HttpSession httpSession) throws Exception {
         boolean succes = true;

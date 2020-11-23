@@ -21,7 +21,7 @@ public class InternauteCreateResponse {
      * And save Internaute in database if doesn't exists
      *
      * @param data Data from HTML with values of the created Internaute
-     * @throws Exception
+     * @throws Exception In file InternauteExceptionEnum
      */
     public void CreateInDatabaseResponse(Map<String, String> data) throws Exception {
         // Check if Email is already used in database

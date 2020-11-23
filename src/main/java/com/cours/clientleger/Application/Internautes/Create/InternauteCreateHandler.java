@@ -27,7 +27,7 @@ public class InternauteCreateHandler {
      * @param data        Data from HTML with values of the created Internaute
      * @param httpSession Data in Http session
      * @return If the creation finished or if there was errors
-     * @throws Exception
+     * @throws Exception In file InternauteExceptionEnum
      */
     public boolean CreateInternautes(Map<String, String> data, HttpSession httpSession) throws Exception {
         boolean succes = true;

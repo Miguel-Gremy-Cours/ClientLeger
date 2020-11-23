@@ -25,7 +25,7 @@ public class InternauteUpdateInstance {
      *
      * @param data Data from HTML with values of the updated Internaute
      * @return The Updated Internaute Object (InternauteEntity)
-     * @throws Exception
+     * @throws Exception  In file InternauteExceptionEnum
      */
     public InternauteEntity UpdateInternautes(Map<String, String> data) throws Exception {
         if (isEmpty(data)) {

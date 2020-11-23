@@ -9,7 +9,7 @@ public class InternauteLogOutHandler {
     /**
      * Function that disconnect the user by deleting data from it's session and deleting isLoged variable in session
      *
-     * @param httpSession
+     * @param httpSession Data in Http session
      */
     public void LogOut(HttpSession httpSession) {
         httpSession.removeAttribute("data");

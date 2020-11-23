@@ -20,7 +20,7 @@ public class InternauteCreateInstance {
      *
      * @param data Data from HTML with values of the created Internaute
      * @return The new Internaute (class InternauteEntity)
-     * @throws Exception
+     * @throws Exception In file InternauteExceptionEnum
      */
     public InternauteEntity CreateInternautes(Map<String, String> data) throws Exception {
         // Check if all required values are correct to create new Internaute and throw Exception if that's not the case

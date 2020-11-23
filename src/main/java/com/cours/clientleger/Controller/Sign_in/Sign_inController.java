@@ -53,7 +53,7 @@ public class Sign_inController {
      * @param data        Data from HTML with values of the Internaute sign in
      * @param httpSession Data in Http session
      * @return The good controller if the user entered good login and password
-     * @throws Exception
+     * @throws Exception  In file InternauteExceptionEnum
      */
     @PostMapping("/return")
     public ModelAndView ReturnFromSign_in(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {

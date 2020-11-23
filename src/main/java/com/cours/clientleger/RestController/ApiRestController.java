@@ -23,7 +23,7 @@ public class ApiRestController {
     /**
      * API controller that send Offres at the URL : /api
      *
-     * @return List<RestOffre> of all offres in database
+     * @return List of RestOffre of all offres in database
      */
     @GetMapping
     public Iterable<RestOffre> restOffre() {

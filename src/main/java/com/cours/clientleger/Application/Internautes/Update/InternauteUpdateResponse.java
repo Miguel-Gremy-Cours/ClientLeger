@@ -19,7 +19,7 @@ public class InternauteUpdateResponse {
      * Function that save the updated Internaute in database
      *
      * @param data Data from HTML with values of the updated Internaute
-     * @throws Exception
+     * @throws Exception  In file InternauteExceptionEnum
      */
     public void UpdateInDatabaseResponse(Map<String, String> data) throws Exception {
         InternauteEntity internaute = internauteUpdateInstance.UpdateInternautes(data);

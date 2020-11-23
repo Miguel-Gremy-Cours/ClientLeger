@@ -25,7 +25,7 @@ public class InternauteUpdateHandler {
      * @param data        Data from HTML with values of the updated Internaute
      * @param httpSession Data in Http session
      * @return If the update finished or if there was errors
-     * @throws Exception
+     * @throws Exception In file InternauteExceptionEnum
      */
     public boolean UpdateInternautes(Map<String, String> data, HttpSession httpSession) throws Exception {
         boolean succes = true;

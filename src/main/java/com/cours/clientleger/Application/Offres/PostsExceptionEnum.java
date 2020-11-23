@@ -16,6 +16,8 @@ public enum PostsExceptionEnum {
 
     /**
      * Function that return the fulll Error String of Error
+     *
+     * @return The Error's full name
      */
     public String getFName() {
         return this.FName;

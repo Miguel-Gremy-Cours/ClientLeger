@@ -19,7 +19,7 @@ public class InternauteGetResponse {
     /**
      * Function that create a Map of the Internaute values
      *
-     * @param internaute
+     * @param internaute Required Internaute to get it's values
      * @return The Map of String, String
      */
     public Map<String, String> GetInDatabaseResponse(InternauteEntity internaute) {

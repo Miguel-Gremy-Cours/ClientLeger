@@ -30,6 +30,8 @@ public enum InternauteExceptionEnum {
 
     /**
      * Function that return the full error String of Error
+     *
+     * @return The Error's full name
      */
     public String getFName() {
         return this.FName;

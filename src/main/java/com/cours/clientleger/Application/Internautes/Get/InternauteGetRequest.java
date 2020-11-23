@@ -22,7 +22,7 @@ public class InternauteGetRequest {
      *
      * @param data Data from HTML with values of the Internaute get
      * @return The Internaute information if logged
-     * @throws Exception
+     * @throws Exception In file InternauteExceptionEnum
      */
     public Map<String, String> GetInDatabaseRequest(Map<String, String> data) throws Exception {
         // Create new Internaute
