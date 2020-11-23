@@ -18,10 +18,19 @@ public enum InternauteExceptionEnum {
 
     private String FName;
 
+
+    /**
+     * Function that link the full error String to short Error String
+     *
+     * @param FName The full Error String
+     */
     InternauteExceptionEnum(String FName) {
         this.FName = FName;
     }
 
+    /**
+     * Function that return the full error String of Error
+     */
     public String getFName() {
         return this.FName;
     }

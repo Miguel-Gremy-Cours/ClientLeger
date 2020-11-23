@@ -12,9 +12,16 @@ import java.util.List;
 import static java.util.Objects.isNull;
 
 public class InternauteValidatorGetProblem {
+    /**
+     * Function that get different problems if exists in the Internaute Object
+     *
+     * @param internautes
+     * @return
+     */
     public static List<String> getProblem(InternauteEntity internautes) {
         List<String> problems = new ArrayList<>();
         if (internautes != null) {
+            // Throw Exception if there is a problem
             if (internautes.getNom().equals("")) {
                 problems.add(InternauteExceptionEnum.LAST_NAME.getFName());
             }

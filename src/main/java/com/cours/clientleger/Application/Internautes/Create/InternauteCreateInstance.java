@@ -15,10 +15,19 @@ import static com.cours.clientleger.Application.Internautes.Validator.Internaute
 
 @Component
 public class InternauteCreateInstance {
+    /**
+     * Function called to create an instance of a new Internaute
+     *
+     * @param data Data from HTML with values of the created Internaute
+     * @return The new Internaute (class InternauteEntity)
+     * @throws Exception
+     */
     public InternauteEntity CreateInternautes(Map<String, String> data) throws Exception {
+        // Check if all required values are correct to create new Internaute and throw Exception if that's not the case
         if (isEmpty(data)) {
             throw new Exception(InternauteExceptionEnum.DATA_EMPTY.getFName());
         } else {
+            // Creating new Internaute if all values are Ok
             int civilite = 0;
             if (data.get("civility").equals("male")) {
                 civilite = 1;

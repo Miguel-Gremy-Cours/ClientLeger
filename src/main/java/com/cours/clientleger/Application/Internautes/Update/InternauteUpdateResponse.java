@@ -15,6 +15,12 @@ public class InternauteUpdateResponse {
     @Autowired
     InternauteUpdateInstance internauteUpdateInstance;
 
+    /**
+     * Function that save the updated Internaute in database
+     *
+     * @param data Data from HTML with values of the updated Internaute
+     * @throws Exception
+     */
     public void UpdateInDatabaseResponse(Map<String, String> data) throws Exception {
         InternauteEntity internaute = internauteUpdateInstance.UpdateInternautes(data);
         internauteRepository.save(internaute);

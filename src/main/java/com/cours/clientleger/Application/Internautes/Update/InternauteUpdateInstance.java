@@ -20,8 +20,16 @@ public class InternauteUpdateInstance {
     @Autowired
     InternauteRepository internauteRepository;
 
+    /**
+     * Function that create an Internaute with the values of Login and Password
+     *
+     * @param data Data from HTML with values of the updated Internaute
+     * @return The Updated Internaute Object (InternauteEntity)
+     * @throws Exception
+     */
     public InternauteEntity UpdateInternautes(Map<String, String> data) throws Exception {
         if (isEmpty(data)) {
+            // Check if Internaute fields are correct
             throw new Exception(InternauteExceptionEnum.DATA_EMPTY.getFName());
         } else {
             InternauteEntity internautes = internauteRepository.getByLoginAndPassword(data.get("login"), Hashing.sha256().hashString(data.get("password"), StandardCharsets.UTF_8).toString());

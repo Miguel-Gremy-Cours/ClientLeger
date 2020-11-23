@@ -7,6 +7,12 @@ import org.apache.commons.validator.routines.EmailValidator;
 import java.time.LocalDate;
 
 public class InternauteValidatorIsSet {
+    /**
+     * Function that check if the Internaute Object is filled
+     *
+     * @param internautes The Internaute created/Updated
+     * @return If one or more fields are empty or not
+     */
     public static boolean isSet(InternauteEntity internautes) {
         boolean isSet = true;
         if (internautes != null) {

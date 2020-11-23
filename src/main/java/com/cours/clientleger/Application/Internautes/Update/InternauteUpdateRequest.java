@@ -17,11 +17,20 @@ public class InternauteUpdateRequest {
     @Autowired
     InternauteUpdateResponse internauteUpdateResponse;
 
+    /**
+     * Function that call other function to create the Internaute and update it in database
+     *
+     * @param data Data from HTML with values of the updated Internaute
+     * @throws Exception
+     */
     public void UpdateInDatabaseRequest(Map<String, String> data) throws Exception {
+        // Create new Internaute with the values of updated Internaute
         InternauteEntity internaute = internauteUpdateInstance.UpdateInternautes(data);
         if (isSet(internaute)) {
+            // If Internaute fileds are correct, update it in database
             internauteUpdateResponse.UpdateInDatabaseResponse(data);
         } else {
+            // If Internaute fields are not correct, throw Exception
             throw new Exception(InternauteExceptionEnum.INCORRECT_VALUES.getFName());
         }
     }

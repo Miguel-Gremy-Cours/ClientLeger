@@ -16,6 +16,12 @@ public class InternauteGetResponse {
     @Autowired
     InternauteGetInstance internauteGetInstance;
 
+    /**
+     * Function that create a Map of the Internaute values
+     *
+     * @param internaute
+     * @return The Map of String, String
+     */
     public Map<String, String> GetInDatabaseResponse(InternauteEntity internaute) {
         internauteRepository.save(internaute);
 
