@@ -1,21 +1,33 @@
 .offres {
     border: solid #000000 1pt;
     padding-bottom: 10pt;
+    width: 250pt;
+    height: 200pt;
+    margin: 25pt;
 }
 
-.offres.up {
+.offres .up {
     padding-bottom: 3.25pt;
 }
 
-.offres.down {
+.offres .down {
     padding-top: 3.25pt;
 }
 
-.offres.down.left.component {
-    padding: 0.25pt;
+.offres .down .left {
+    width: 125pt;
 }
 
-.offres.down.right.component {
-    padding-top: 0.5pt;
-    padding-bottom: 0.5pt;
+.offres .down .right {
+    width: 125pt;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
 }

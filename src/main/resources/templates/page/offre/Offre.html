@@ -1,0 +1,31 @@
+<main xmlns:th="http://www.thymeleaf.org"
+      th:with='offre=${#httpSession.getAttribute("offre")}, data=${#httpSession.getAttribute("data")}'>
+
+    <!--th:with='offre=${#httpSession.getAttribute("offre")}'-->
+
+    <!--/*@thymesVar id="offre" type="com.cours.clientleger.Model.DatabaseEntities.OffreEntity"*/-->
+    <h2 th:text="${offre.getIntitule()}"></h2>
+
+    <p th:text="${offre.getStudioByIdStudio().getLibelle()}"></p>
+
+    <p th:text="${offre.getDatePublication()}"></p>
+
+    <p th:text="${offre.getDureDiffusion()}"></p>
+
+    <p th:text="${offre.getNombrePostes()}"></p>
+
+    <p th:text="${offre.getDescriptionPoste()}"></p>
+
+    <p th:text="${offre.getDescriptionProfile()}"></p>
+
+    <p th:text="${offre.getEmployeByIdEmploye().getNom()}"></p>
+
+    <p th:text="${offre.getLocalisation()}"></p>
+
+    <p th:text="${offre.getCodeOffre()}"></p>
+
+    <form th:action='${"offre/postulate/" + data.get("id") + "/" + ${offre.getId()}}'>
+        <button type="submit">Postuler</button>
+    </form>
+
+</main>

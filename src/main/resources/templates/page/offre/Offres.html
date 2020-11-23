@@ -9,17 +9,21 @@
 
     </form>
 
-    <div class="d-flex flex-column align-items-center flex-fill">
+    <div class="d-flex justify-content-center flex-md-wrap">
 
         <div class="offres d-flex flex-column"
              th:each="offresInList : ${offresList}">
-            <!--/*@thymesVar id="offresInList" type="com.cours.clientleger.Model.DatabaseEntities.OffreEntity"*/-->
-            <h4 class="up text-sm-left text-dark"
-                th:text="${offresInList.getIntitule()}"></h4>
-            <HR>
 
-            <div class="down d-flex flex-row">
-                <div class="left d-flex flex-column">
+            <h4 class="up text-sm-left">
+                <a th:href='${"offre/" + offresInList.getId()}'
+                   th:text='${offresInList.getIntitule()}'></a>
+            </h4>
+
+            <hr>
+
+            <div class="down d-flex flex-row justify-content-between">
+
+                <div class="left d-flex flex-column flex-wrap pl-2">
                     <p class="component"
                        th:text='${offresInList.getStudioByIdStudio().getLibelle()}'></p>
                     <p class="component"
@@ -30,7 +34,7 @@
                        th:text='${offresInList.getDatePublication()}'></p>
                 </div>
 
-                <div class="right d-flex flex-column">
+                <div class="right d-flex flex-column flex-wrap pr-2 align-items-end">
                     <p class="component" th:text="${offresInList.getDescriptionPoste()}"></p>
                     <p class="component" th:text="${offresInList.getDescriptionProfile()}"></p>
                 </div>

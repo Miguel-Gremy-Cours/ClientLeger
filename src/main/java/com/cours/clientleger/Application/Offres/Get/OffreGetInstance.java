@@ -17,7 +17,7 @@ public class OffreGetInstance {
     public OffreEntity GetOffre(Map<String, String> data) {
         return offresRepository.getById(Integer.parseInt(data.get("id")));
     }
- */
+
 
     public List<OffreEntity> GetOffresList() {
         return (List<OffreEntity>) offresRepository.findAll();

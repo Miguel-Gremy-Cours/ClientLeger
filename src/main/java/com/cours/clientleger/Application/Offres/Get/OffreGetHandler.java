@@ -15,4 +15,10 @@ public class OffreGetHandler {
 
         return true;
     }
+
+    public Boolean GetOffre(int Id, HttpSession httpSession) {
+        httpSession.setAttribute("offre", offreGetInstance.GetOffre(Id));
+
+        return true;
+    }
 }

@@ -20,6 +20,7 @@ public class InternauteGetResponse {
         internauteRepository.save(internaute);
 
         Map<String, String> dataOut = new HashMap<>();
+        dataOut.put("id", String.valueOf(internaute.getId()));
         dataOut.put("nom", internaute.getNom());
         dataOut.put("prenom", internaute.getPrenom());
         dataOut.put("date_naissance", internaute.getDateNaissance().toString());

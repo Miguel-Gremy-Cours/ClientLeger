@@ -4,6 +4,6 @@ import com.cours.clientleger.Model.DatabaseEntities.OffreEntity;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface OffresRepository extends CrudRepository<OffreEntity, Long> {
-    OffreEntity getById(long id);
+public interface OffresRepository extends CrudRepository<OffreEntity, Integer> {
+    OffreEntity getById(int id);
 }
