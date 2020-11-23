@@ -28,6 +28,12 @@ public class InternautesController {
     InternauteLogOutHandler internauteLogOutHandler;
     IndexController indexController = new IndexController();
 
+    /**
+     * Controller to view the profile information
+     *
+     * @param httpSession Data in Http session
+     * @return Profile ModelAndView
+     */
     @GetMapping("")
     public ModelAndView Profile(HttpSession httpSession) {
         Page page = new Page().
@@ -37,6 +43,12 @@ public class InternautesController {
         return refresh(page);
     }
 
+    /**
+     * Controller to view the update profile information page
+     *
+     * @param httpSession Data in Http session
+     * @return Modify ModelAndView
+     */
     @GetMapping("/modify")
     public ModelAndView Modify(HttpSession httpSession) {
         Page page = new Page().
@@ -46,6 +58,15 @@ public class InternautesController {
         return refresh(page);
     }
 
+    /**
+     * Controller to check if modified information are correct
+     * And do the redirection if the informations are good or not
+     *
+     * @param data        Data from HTML with values of the Internaute get
+     * @param httpSession Data in Http session
+     * @return The correct ModelAndView if there are errors or not
+     * @throws Exception
+     */
     @PostMapping("/modify/return")
     public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
         ModelAndView modelReturn;
@@ -58,6 +79,12 @@ public class InternautesController {
         return modelReturn;
     }
 
+    /**
+     * Controller that log out the user by deleting it's session information
+     *
+     * @param httpSession Data in Http session
+     * @return Index ModelAndView
+     */
     @PostMapping("/logout")
     public ModelAndView LogOut(HttpSession httpSession) {
         internauteLogOutHandler.LogOut(httpSession);

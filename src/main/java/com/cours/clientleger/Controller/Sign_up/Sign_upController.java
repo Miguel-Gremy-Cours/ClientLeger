@@ -25,6 +25,12 @@ public class Sign_upController {
     InternauteCreateHandler internauteCreateHandler;
     Sign_inController sign_inController = new Sign_inController();
 
+    /**
+     * Controller to view the sign up page
+     *
+     * @param httpSession Data in Http session
+     * @return Sign up ModelAndView
+     */
     @GetMapping("/new")
     public ModelAndView Sign_up(HttpSession httpSession) {
         Page page = new Page()
@@ -34,6 +40,15 @@ public class Sign_upController {
         return refresh(page);
     }
 
+    /**
+     * Controller to connect and create the user from the Sign up page
+     * And check if user entered good login and password
+     *
+     * @param data        Data from HTML with values of the Internaute sign up
+     * @param httpSession Data in Http session
+     * @return The correct ModelAndView if there are errors or not
+     * @throws Exception
+     */
     @PostMapping("/return")
     public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
         ModelAndView modelReturn;

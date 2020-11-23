@@ -23,6 +23,12 @@ public class OffreController {
     @Autowired
     IndexController indexController;
 
+    /**
+     * Controller to view the Offres list
+     *
+     * @param httpSession Data in Http session
+     * @return Offres ModelAndView
+     */
     @GetMapping("")
     public ModelAndView Offres(HttpSession httpSession) {
         Page page = new Page()
@@ -34,6 +40,13 @@ public class OffreController {
         return refresh(page);
     }
 
+    /**
+     * Controller to view details of selected offre
+     *
+     * @param Id          Selected Offre's Id
+     * @param httpSession Data in Http session
+     * @return Offre ModelAndView
+     */
     @GetMapping("/{Id}")
     public ModelAndView OffreDetail(@PathVariable int Id, HttpSession httpSession) {
         Page page = new Page()
@@ -45,6 +58,13 @@ public class OffreController {
         return refresh(page);
     }
 
+    /**
+     * Controller to postulate to an offer
+     *
+     * @param IdOffre     Selected Offre's Id
+     * @param httpSession Data in Http session
+     * @return
+     */
     @GetMapping("/postulate/{IdOffre}")
     public ModelAndView OffrePostulate(@PathVariable int IdOffre, HttpSession httpSession) {
         return indexController.Index(httpSession);

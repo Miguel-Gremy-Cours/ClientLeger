@@ -14,6 +14,12 @@ import static com.cours.clientleger.Controller.RefreshController.*;
 @Controller
 public class IndexController {
 
+    /**
+     * Main controller of the application
+     *
+     * @param httpSession Data in Http session
+     * @return Index ModelAndView
+     */
     @GetMapping()
     public ModelAndView Index(HttpSession httpSession) {
         Page page = new Page()

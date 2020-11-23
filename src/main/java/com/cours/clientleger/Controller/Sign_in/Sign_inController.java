@@ -31,6 +31,12 @@ public class Sign_inController {
     InternauteGetHandler internauteGetHandler;
     IndexController indexController = new IndexController();
 
+    /**
+     * Controller to view the Sign in page
+     *
+     * @param httpSession Data in Http session
+     * @return Sign in ModelAndView
+     */
     @GetMapping()
     public ModelAndView Sign_in(HttpSession httpSession) {
         Page page = new Page()
@@ -40,7 +46,15 @@ public class Sign_inController {
         return refresh(page);
     }
 
-
+    /**
+     * Controller to connect the user from Sign in page
+     * And check if user entered good login password
+     *
+     * @param data        Data from HTML with values of the Internaute sign in
+     * @param httpSession Data in Http session
+     * @return The good controller if the user entered good login and password
+     * @throws Exception
+     */
     @PostMapping("/return")
     public ModelAndView ReturnFromSign_in(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
         ModelAndView modelReturn;
