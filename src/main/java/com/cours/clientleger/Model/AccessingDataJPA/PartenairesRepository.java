@@ -5,4 +5,5 @@ import com.cours.clientleger.Model.DatabaseEntities.PartenaireEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PartenairesRepository extends CrudRepository<PartenaireEntity, Integer> {
+    boolean existsByLoginAndPassword(String Login, String Password);
 }

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Date;
+import java.time.Instant;
+import java.util.Calendar;
 import java.util.Map;
 
 import static com.cours.clientleger.Application.Internautes.Validator.InternauteValidatorIsEmpty.isEmpty;
@@ -38,12 +40,16 @@ public class InternauteCreateInstance {
             internaute.setNom(data.get("nom"));
             internaute.setPrenom(data.get("prenom"));
             internaute.setDateNaissance(Date.valueOf(stringToLocalDate(data.get("date_naissance"))));
+            internaute.setDateInscription(new Date(Calendar.getInstance().getTime().getTime()));
             internaute.setIdCivilite(civilite);
             internaute.setLienGoogle(null);
             internaute.setLogin(data.get("login"));
             internaute.setPassword(Hashing.sha256().hashString(data.get("password"), StandardCharsets.UTF_8).toString());
             internaute.setCv(null);
             internaute.setEmail(data.get("email"));
+
+            System.out.println(internaute.getId());
+
             return internaute;
         }
     }

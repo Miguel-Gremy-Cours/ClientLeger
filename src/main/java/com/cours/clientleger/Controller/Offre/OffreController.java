@@ -2,6 +2,7 @@ package com.cours.clientleger.Controller.Offre;
 
 import com.cours.clientleger.Application.Offres.Get.OffreGetHandler;
 import com.cours.clientleger.Controller.IndexController;
+import com.cours.clientleger.Model.AccessingDataJPA.OffresRepository;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class OffreController {
     OffreGetHandler offreGetHandler;
     @Autowired
     IndexController indexController;
+
+    @Autowired
+    OffresRepository offresRepository;
 
     /**
      * Controller to view the Offres list

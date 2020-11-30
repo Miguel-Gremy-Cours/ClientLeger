@@ -43,6 +43,16 @@
             <button class="btn btn-primary" type="submit">Postuler</button>
         </form>
 
-    </div>
+        <br>
 
+        <div th:if='${#httpSession.getAttribute("isLoged") == null}'>
+
+            <hr>
+
+            <p>You are not connected, please <a href="/sign_in"><u>connect</u></a> to your account
+                to postulate.</p>
+            <p>You don't have an account ? Create one now <a href="/sign_up/new"><u>here</u>.</a>
+            </p>
+        </div>
+    </div>
 </main>
