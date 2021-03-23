@@ -184,4 +184,23 @@ public class InternauteEntity {
     public void setOffresInternautesById(Collection<OffresInternauteEntity> offresInternautesById) {
         this.offresInternautesById = offresInternautesById;
     }
+
+    @Override
+    public String toString() {
+        return "InternauteEntity{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", dateNaissance=" + dateNaissance +
+                ", dateInscription=" + dateInscription +
+                ", idCivilite=" + idCivilite +
+                ", lienGoogle='" + lienGoogle + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", cv='" + cv + '\'' +
+                ", email='" + email + '\'' +
+                ", civiliteByIdCivilite=" + civiliteByIdCivilite +
+                ", offresInternautesById=" + offresInternautesById +
+                '}';
+    }
 }

@@ -5,27 +5,27 @@
             <label for="nom">Last name</label>
             <label type="text" class="form-control" id="nom"
                    placeholder="Enter login" name="nom"
-                   th:text='${data.get("nom")}'></label>
+                   th:text='${data.getNom()}'></label>
         </div>
         <div class="form-group">
             <label for="prenom">First name</label>
             <label type="text" class="form-control" id="prenom"
                    placeholder="Enter login" name="prenom"
-                   th:text='${data.get("login")}'></label>
+                   th:text='${data.getLogin()}'></label>
         </div>
 
         <div class="form-group">
             <label for="date_naissance">Birth date</label>
             <label type="text" class="form-control" id="date_naissance"
                    name="date_naissance"
-                   th:text='${data.get("date_naissance")}'></label>
+                   th:text='${data.getDateNaissance()}'></label>
         </div>
 
         <div class="form-group">
             <label for="civilite">Civility</label>
             <label type="text" class="form-control" id="civilite"
                    name="civilite"
-                   th:text="${data.get('civilite') == '1'} ? 'Male' : 'Female'"></label>
+                   th:text="${data.getIdCivilite() == '1'} ? 'Male' : 'Female'"></label>
         </div>
 
         <!-- Include Google link -->
@@ -36,7 +36,7 @@
             <label for="email">Email</label>
             <label type="text" class="form-control" id="email"
                    name="email"
-                   th:text='${data.get("email")}'></label>
+                   th:text='${data.getEmail()}'></label>
         </div>
     </div>
     <div class="col d-flex align-items-center flex-column mb-3 border border-secondary rounded">

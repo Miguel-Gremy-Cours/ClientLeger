@@ -36,6 +36,7 @@ public class ApiRestController {
     /**
      * API controller that send Offres at the URL : /api
      *
+     * @param credentials credentials from the request
      * @return List of RestOffre of all offres in database
      */
     @PostMapping
@@ -86,6 +87,7 @@ public class ApiRestController {
     /**
      * API function that check if partenaire is log correctly
      *
+     * @param credentials credentials from the request
      * @return Boolean if login or not
      */
     private boolean checkLoginPassword(String credentials) {

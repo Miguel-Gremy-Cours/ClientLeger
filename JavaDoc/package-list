@@ -1,9 +1,5 @@
 com.cours.clientleger
 com.cours.clientleger.Application.Internautes
-com.cours.clientleger.Application.Internautes.Create
-com.cours.clientleger.Application.Internautes.Get
-com.cours.clientleger.Application.Internautes.LogOut
-com.cours.clientleger.Application.Internautes.Update
 com.cours.clientleger.Application.Internautes.Validator
 com.cours.clientleger.Application.Offres
 com.cours.clientleger.Application.Offres.Get

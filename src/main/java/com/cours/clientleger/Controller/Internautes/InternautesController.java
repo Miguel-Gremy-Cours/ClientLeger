@@ -1,7 +1,6 @@
 package com.cours.clientleger.Controller.Internautes;
 
-import com.cours.clientleger.Application.Internautes.LogOut.InternauteLogOutHandler;
-import com.cours.clientleger.Application.Internautes.Update.InternauteUpdateHandler;
+import com.cours.clientleger.Application.Internautes.InternauteFunc;
 import com.cours.clientleger.Controller.IndexController;
 import com.cours.clientleger.Model.Page;
 
@@ -23,9 +22,8 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @RequestMapping("/profile")
 public class InternautesController {
     @Autowired
-    InternauteUpdateHandler internauteUpdateHandler;
-    @Autowired
-    InternauteLogOutHandler internauteLogOutHandler;
+    InternauteFunc internauteFunc;
+
     IndexController indexController = new IndexController();
 
     /**
@@ -39,6 +37,7 @@ public class InternautesController {
         Page page = new Page().
                 setTitle("Profile")
                 .setPagePath("page/profile/Profile");
+        httpSession.setAttribute("data", internauteFunc.get(Integer.parseInt(httpSession.getAttribute("id").toString())));
 
         return refresh(page);
     }
@@ -65,15 +64,19 @@ public class InternautesController {
      * @param data        Data from HTML with values of the Internaute get
      * @param httpSession Data in Http session
      * @return The correct ModelAndView if there are errors or not
-     * @throws Exception In file InternauteExceptionEnum
      */
     @PostMapping("/modify/return")
-    public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
+    public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) {
         ModelAndView modelReturn;
-        if (internauteUpdateHandler.UpdateInternautes(data, httpSession)) {
+
+        try {
+            internauteFunc.update(data, httpSession);
             modelReturn = Profile(httpSession);
-        } else {
+            httpSession.removeAttribute("problems");
+        } catch (Exception ignore) {
+            System.out.println(ignore.getMessage());
             modelReturn = Modify(httpSession);
+            httpSession.setAttribute("problems", "Invalid input");
         }
 
         return modelReturn;
@@ -87,9 +90,7 @@ public class InternautesController {
      */
     @PostMapping("/logout")
     public ModelAndView LogOut(HttpSession httpSession) {
-        internauteLogOutHandler.LogOut(httpSession);
-        ModelAndView modelReturn = indexController.Index(httpSession);
-
-        return modelReturn;
+        internauteFunc.logOut(httpSession);
+        return indexController.Index(httpSession);
     }
 }

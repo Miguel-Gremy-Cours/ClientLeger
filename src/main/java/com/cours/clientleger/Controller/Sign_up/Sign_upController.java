@@ -1,6 +1,6 @@
 package com.cours.clientleger.Controller.Sign_up;
 
-import com.cours.clientleger.Application.Internautes.Create.InternauteCreateHandler;
+import com.cours.clientleger.Application.Internautes.InternauteFunc;
 import com.cours.clientleger.Controller.Sign_in.Sign_inController;
 import com.cours.clientleger.Model.Page;
 
@@ -22,7 +22,8 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @RequestMapping("/sign_up")
 public class Sign_upController {
     @Autowired
-    InternauteCreateHandler internauteCreateHandler;
+    InternauteFunc internauteFunc;
+
     Sign_inController sign_inController = new Sign_inController();
 
     /**
@@ -47,15 +48,18 @@ public class Sign_upController {
      * @param data        Data from HTML with values of the Internaute sign up
      * @param httpSession Data in Http session
      * @return The correct ModelAndView if there are errors or not
-     * @throws Exception In file InternauteExceptionEnum
      */
     @PostMapping("/return")
-    public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) throws Exception {
+    public ModelAndView ReturnFromSign_up(@RequestParam Map<String, String> data, HttpSession httpSession) {
         ModelAndView modelReturn;
-        if (internauteCreateHandler.CreateInternautes(data, httpSession)) {
+
+        try {
+            internauteFunc.create(data);
             modelReturn = sign_inController.Sign_in(httpSession);
-        } else {
+            httpSession.removeAttribute("problems");
+        } catch (Exception ignore) {
             modelReturn = Sign_up(httpSession);
+            httpSession.setAttribute("problems", "Please fill all fields");
         }
 
         return modelReturn;
