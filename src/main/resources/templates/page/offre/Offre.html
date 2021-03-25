@@ -54,5 +54,12 @@
             <p>You don't have an account ? Create one now <a href="/sign_up/new"><u>here</u>.</a>
             </p>
         </div>
+
+        <div th:with='problems=${#httpSession.getAttribute("problems")}'>
+            <div th:each="problem : ${problems}">
+                <span class="text-danger mt-1" th:text="${problem}"></span>
+            </div>
+        </div>
+
     </div>
 </main>

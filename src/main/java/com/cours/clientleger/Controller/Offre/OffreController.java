@@ -1,10 +1,5 @@
 package com.cours.clientleger.Controller.Offre;
 
-import com.cours.clientleger.Application.Offres.Get.OffreGetHandler;
-import com.cours.clientleger.Controller.IndexController;
-import com.cours.clientleger.Model.AccessingDataJPA.OffresInternautesRepository;
-import com.cours.clientleger.Model.AccessingDataJPA.OffresRepository;
-import com.cours.clientleger.Model.DatabaseEntities.OffresInternauteEntity;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
+import com.cours.clientleger.Application.Offres.OffresFunc;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,14 +19,7 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @RequestMapping("/offre")
 public class OffreController {
     @Autowired
-    OffreGetHandler offreGetHandler;
-    @Autowired
-    IndexController indexController;
-
-    @Autowired
-    OffresRepository offresRepository;
-    @Autowired
-    OffresInternautesRepository offresInternautesRepository;
+    OffresFunc offresFunc;
 
     /**
      * Controller to view the Offres list
@@ -48,7 +33,7 @@ public class OffreController {
                 .setPagePath("page/offre/Offres")
                 .setTitle("Offres");
 
-        offreGetHandler.GetOffresList(httpSession);
+        httpSession.setAttribute("offres", offresFunc.getOffres());
 
         return refresh(page);
     }
@@ -66,7 +51,7 @@ public class OffreController {
                 .setPagePath("page/offre/Offre")
                 .setTitle("Offre " + Id);
 
-        offreGetHandler.GetOffre(Id, httpSession);
+        httpSession.setAttribute("offre", offresFunc.getOffre(Id));
 
         return refresh(page);
     }
@@ -74,21 +59,23 @@ public class OffreController {
     /**
      * Controller to postulate to an offer
      *
-     * @param IdOffre     Selected Offre's Id
+     * @param idOffre     Selected Offre's Id
      * @param httpSession Data in Http session
      * @return Index ModelAndView
      */
-    @GetMapping("/postulate/{IdOffre}")
-    public ModelAndView OffrePostulate(@PathVariable int IdOffre, HttpSession httpSession) {
-        Map<String, String> data = (Map<String, String>) httpSession.getAttribute("data");
+    @GetMapping("/postulate/{idOffre}")
+    public ModelAndView OffrePostulate(@PathVariable int idOffre, HttpSession httpSession) {
+        Page page = new Page();
 
-        OffresInternauteEntity offresInternaute = new OffresInternauteEntity();
-        offresInternaute.setIdOffre(IdOffre);
-        offresInternaute.setIdInternaute(Integer.parseInt(data.get("id")));
-        offresInternaute.setDatePostulation(new Date(Calendar.getInstance().getTime().getTime()));
+        if (offresFunc.createOffreInternaute(httpSession, idOffre)) {
+            page.setPagePath("page/home/Home")
+                    .setTitle("Home");
+        } else {
+            page.setPagePath("page/offre/Offre")
+                    .setTitle("Offre " + idOffre);
+            httpSession.setAttribute("problems", "You already apply to this offer");
+        }
 
-        offresInternautesRepository.save(offresInternaute);
-
-        return indexController.Index(httpSession);
+        return refresh(page);
     }
 }

@@ -1,5 +1,5 @@
 <main xmlns:th="http://www.thymeleaf.org"
-      th:with='offresList=${#httpSession.getAttribute("offresList")}'>
+      th:with='offres=${#httpSession.getAttribute("offres")}'>
 
     <div class="filtre">
 
@@ -12,7 +12,7 @@
     <div class="d-flex justify-content-center flex-md-wrap">
 
         <div class="offres d-flex flex-column"
-             th:each="offresInList : ${offresList}">
+             th:each="offresInList : ${offres}">
 
             <h4 class="up text-sm-left">
                 <a th:href='${"/offre/" + offresInList.getId()}'
