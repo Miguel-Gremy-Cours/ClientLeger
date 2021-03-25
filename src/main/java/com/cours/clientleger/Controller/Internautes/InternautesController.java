@@ -1,7 +1,6 @@
 package com.cours.clientleger.Controller.Internautes;
 
 import com.cours.clientleger.Application.Internautes.InternauteFunc;
-import com.cours.clientleger.Controller.IndexController;
 import com.cours.clientleger.Model.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,6 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 public class InternautesController {
     @Autowired
     InternauteFunc internauteFunc;
-
-    IndexController indexController = new IndexController();
 
     /**
      * Controller to view the profile information
@@ -67,19 +64,21 @@ public class InternautesController {
      */
     @PostMapping("/modify/return")
     public ModelAndView ReturnFromModify(@RequestParam Map<String, String> data, HttpSession httpSession) {
-        ModelAndView modelReturn;
-
+        Page page = new Page();
         try {
             internauteFunc.update(data, httpSession);
-            modelReturn = Profile(httpSession);
+            page.setPagePath("page/profile/Profile");
+            page.setTitle("Profile");
+            httpSession.setAttribute("data", internauteFunc.get(Integer.parseInt(httpSession.getAttribute("id").toString())));
             httpSession.removeAttribute("problems");
         } catch (Exception ignore) {
             System.out.println(ignore.getMessage());
-            modelReturn = Modify(httpSession);
+            page.setPagePath("page/profile/Modify")
+                    .setTitle("Modify");
             httpSession.setAttribute("problems", "Invalid input");
         }
 
-        return modelReturn;
+        return refresh(page);
     }
 
     /**
@@ -90,7 +89,10 @@ public class InternautesController {
      */
     @PostMapping("/logout")
     public ModelAndView LogOut(HttpSession httpSession) {
+        Page page = new Page()
+                .setPagePath("page/home/Home")
+                .setTitle("Home");
         internauteFunc.logOut(httpSession);
-        return indexController.Index(httpSession);
+        return refresh(page);
     }
 }

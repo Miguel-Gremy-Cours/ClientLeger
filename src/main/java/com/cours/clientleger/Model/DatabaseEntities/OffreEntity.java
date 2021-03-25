@@ -16,42 +16,29 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Offre", schema = "dbo", catalog = "MegaCasting")
 public class OffreEntity {
-    private int id;
-    private int idStudio;
+    private Integer id;
     private String intitule;
-    private int idMetier;
     private Date datePublication;
-    private int dureDiffusion;
-    private int nombrePostes;
+    private Integer dureDiffusion;
+    private Integer nombrePostes;
     private String descriptionPoste;
     private String descriptionProfile;
-    private int idEmploye;
     private String localisation;
     private String codeOffre;
-    private Collection<ContratEntity> contratsById;
-    private StudioEntity studioByIdStudio;
     private MetierEntity metierByIdMetier;
     private EmployeEntity employeByIdEmploye;
+    private Collection<ContratEntity> contratsById;
+    private StudioEntity studioByIdStudio;
     private Collection<OffresInternauteEntity> offresInternautesById;
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "IdStudio", nullable = false)
-    public int getIdStudio() {
-        return idStudio;
-    }
-
-    public void setIdStudio(int idStudio) {
-        this.idStudio = idStudio;
     }
 
     @Basic
@@ -62,16 +49,6 @@ public class OffreEntity {
 
     public void setIntitule(String intitule) {
         this.intitule = intitule;
-    }
-
-    @Basic
-    @Column(name = "IdMetier", nullable = false)
-    public int getIdMetier() {
-        return idMetier;
-    }
-
-    public void setIdMetier(int idMetier) {
-        this.idMetier = idMetier;
     }
 
     @Basic
@@ -86,21 +63,21 @@ public class OffreEntity {
 
     @Basic
     @Column(name = "DureDiffusion", nullable = false)
-    public int getDureDiffusion() {
+    public Integer getDureDiffusion() {
         return dureDiffusion;
     }
 
-    public void setDureDiffusion(int dureDiffusion) {
+    public void setDureDiffusion(Integer dureDiffusion) {
         this.dureDiffusion = dureDiffusion;
     }
 
     @Basic
     @Column(name = "NombrePostes", nullable = false)
-    public int getNombrePostes() {
+    public Integer getNombrePostes() {
         return nombrePostes;
     }
 
-    public void setNombrePostes(int nombrePostes) {
+    public void setNombrePostes(Integer nombrePostes) {
         this.nombrePostes = nombrePostes;
     }
 
@@ -122,16 +99,6 @@ public class OffreEntity {
 
     public void setDescriptionProfile(String descriptionProfile) {
         this.descriptionProfile = descriptionProfile;
-    }
-
-    @Basic
-    @Column(name = "IdEmploye", nullable = false)
-    public int getIdEmploye() {
-        return idEmploye;
-    }
-
-    public void setIdEmploye(int idEmploye) {
-        this.idEmploye = idEmploye;
     }
 
     @Basic
@@ -159,23 +126,32 @@ public class OffreEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OffreEntity that = (OffreEntity) o;
-        return id == that.id &&
-                idStudio == that.idStudio &&
-                idMetier == that.idMetier &&
-                dureDiffusion == that.dureDiffusion &&
-                nombrePostes == that.nombrePostes &&
-                idEmploye == that.idEmploye &&
-                Objects.equals(intitule, that.intitule) &&
-                Objects.equals(datePublication, that.datePublication) &&
-                Objects.equals(descriptionPoste, that.descriptionPoste) &&
-                Objects.equals(descriptionProfile, that.descriptionProfile) &&
-                Objects.equals(localisation, that.localisation) &&
-                Objects.equals(codeOffre, that.codeOffre);
+        return Objects.equals(id, that.id) && Objects.equals(intitule, that.intitule) && Objects.equals(datePublication, that.datePublication) && Objects.equals(dureDiffusion, that.dureDiffusion) && Objects.equals(nombrePostes, that.nombrePostes) && Objects.equals(descriptionPoste, that.descriptionPoste) && Objects.equals(descriptionProfile, that.descriptionProfile) && Objects.equals(localisation, that.localisation) && Objects.equals(codeOffre, that.codeOffre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idStudio, intitule, idMetier, datePublication, dureDiffusion, nombrePostes, descriptionPoste, descriptionProfile, idEmploye, localisation, codeOffre);
+        return Objects.hash(id, intitule, datePublication, dureDiffusion, nombrePostes, descriptionPoste, descriptionProfile, localisation, codeOffre);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "IdMetier", referencedColumnName = "Id", nullable = false)
+    public MetierEntity getMetierByIdMetier() {
+        return metierByIdMetier;
+    }
+
+    public void setMetierByIdMetier(MetierEntity metierByIdMetier) {
+        this.metierByIdMetier = metierByIdMetier;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "IdEmploye", referencedColumnName = "Id", nullable = false)
+    public EmployeEntity getEmployeByIdEmploye() {
+        return employeByIdEmploye;
+    }
+
+    public void setEmployeByIdEmploye(EmployeEntity employeByIdEmploye) {
+        this.employeByIdEmploye = employeByIdEmploye;
     }
 
     @OneToMany(mappedBy = "offreByIdOffre")
@@ -188,33 +164,13 @@ public class OffreEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IdStudio", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "IdStudio", referencedColumnName = "Id", nullable = false)
     public StudioEntity getStudioByIdStudio() {
         return studioByIdStudio;
     }
 
     public void setStudioByIdStudio(StudioEntity studioByIdStudio) {
         this.studioByIdStudio = studioByIdStudio;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "IdMetier", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
-    public MetierEntity getMetierByIdMetier() {
-        return metierByIdMetier;
-    }
-
-    public void setMetierByIdMetier(MetierEntity metierByIdMetier) {
-        this.metierByIdMetier = metierByIdMetier;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "IdEmploye", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
-    public EmployeEntity getEmployeByIdEmploye() {
-        return employeByIdEmploye;
-    }
-
-    public void setEmployeByIdEmploye(EmployeEntity employeByIdEmploye) {
-        this.employeByIdEmploye = employeByIdEmploye;
     }
 
     @OneToMany(mappedBy = "offreByIdOffre")

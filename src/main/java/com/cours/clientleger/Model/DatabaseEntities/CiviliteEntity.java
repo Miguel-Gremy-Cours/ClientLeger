@@ -13,18 +13,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Civilite", schema = "dbo", catalog = "MegaCasting")
 public class CiviliteEntity {
-    private int id;
+    private Integer id;
     private String libelle;
     private Collection<EmployeEntity> employesById;
     private Collection<InternauteEntity> internautesById;
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,8 +43,7 @@ public class CiviliteEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CiviliteEntity that = (CiviliteEntity) o;
-        return id == that.id &&
-                Objects.equals(libelle, that.libelle);
+        return Objects.equals(id, that.id) && Objects.equals(libelle, that.libelle);
     }
 
     @Override

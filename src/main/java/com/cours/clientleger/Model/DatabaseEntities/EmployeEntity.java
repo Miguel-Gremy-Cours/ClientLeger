@@ -15,11 +15,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Employe", schema = "dbo", catalog = "MegaCasting")
 public class EmployeEntity {
-    private int id;
+    private Integer id;
     private String nom;
     private String prenom;
-    private int idCivilite;
-    private int idGroupeEmployes;
     private String login;
     private String password;
     private CiviliteEntity civiliteByIdCivilite;
@@ -28,11 +26,11 @@ public class EmployeEntity {
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -54,26 +52,6 @@ public class EmployeEntity {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    @Basic
-    @Column(name = "IdCivilite", nullable = false)
-    public int getIdCivilite() {
-        return idCivilite;
-    }
-
-    public void setIdCivilite(int idCivilite) {
-        this.idCivilite = idCivilite;
-    }
-
-    @Basic
-    @Column(name = "IdGroupeEmployes", nullable = false)
-    public int getIdGroupeEmployes() {
-        return idGroupeEmployes;
-    }
-
-    public void setIdGroupeEmployes(int idGroupeEmployes) {
-        this.idGroupeEmployes = idGroupeEmployes;
     }
 
     @Basic
@@ -101,22 +79,16 @@ public class EmployeEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EmployeEntity that = (EmployeEntity) o;
-        return id == that.id &&
-                idCivilite == that.idCivilite &&
-                idGroupeEmployes == that.idGroupeEmployes &&
-                Objects.equals(nom, that.nom) &&
-                Objects.equals(prenom, that.prenom) &&
-                Objects.equals(login, that.login) &&
-                Objects.equals(password, that.password);
+        return Objects.equals(id, that.id) && Objects.equals(nom, that.nom) && Objects.equals(prenom, that.prenom) && Objects.equals(login, that.login) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, prenom, idCivilite, idGroupeEmployes, login, password);
+        return Objects.hash(id, nom, prenom, login, password);
     }
 
     @ManyToOne
-    @JoinColumn(name = "IdCivilite", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "IdCivilite", referencedColumnName = "Id", nullable = false)
     public CiviliteEntity getCiviliteByIdCivilite() {
         return civiliteByIdCivilite;
     }
@@ -126,7 +98,7 @@ public class EmployeEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IdGroupeEmployes", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "IdGroupeEmployes", referencedColumnName = "Id", nullable = false)
     public GroupeEmployeEntity getGroupeEmployeByIdGroupeEmployes() {
         return groupeEmployeByIdGroupeEmployes;
     }

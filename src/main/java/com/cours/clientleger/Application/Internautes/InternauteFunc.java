@@ -1,5 +1,6 @@
 package com.cours.clientleger.Application.Internautes;
 
+import com.cours.clientleger.Model.AccessingDataJPA.CiviliteRepository;
 import com.cours.clientleger.Model.AccessingDataJPA.InternauteRepository;
 import com.cours.clientleger.Model.DatabaseEntities.InternauteEntity;
 import com.google.common.hash.Hashing;
@@ -21,6 +22,8 @@ import javax.servlet.http.HttpSession;
 public class InternauteFunc {
     @Autowired
     InternauteRepository internauteRepository;
+    @Autowired
+    CiviliteRepository civiliteRepository;
 
     /**
      * function called when user log-out
@@ -104,7 +107,7 @@ public class InternauteFunc {
      */
     private InternauteEntity createInternaute(Map<String, String> internauteMap, int id) {
         InternauteEntity internaute = new InternauteEntity();
-        internaute.setIdCivilite(internauteMap.get("civility").equals("male") ? 1 : 2);
+        internaute.setCiviliteByIdCivilite(civiliteRepository.findById(internauteMap.get("civility").equals("male") ? 1 : 2));
         internaute.setNom(internauteMap.get("nom"));
         internaute.setPrenom(internauteMap.get("prenom"));
         internaute.setDateNaissance(Date.valueOf(stringToLocalDate(internauteMap.get("date_naissance"))));

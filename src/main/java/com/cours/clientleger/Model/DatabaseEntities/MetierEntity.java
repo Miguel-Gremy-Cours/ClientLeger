@@ -15,19 +15,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Metier", schema = "dbo", catalog = "MegaCasting")
 public class MetierEntity {
-    private int id;
+    private Integer id;
     private String libelle;
-    private int idDomaineMetier;
     private DomaineMetierEntity domaineMetierByIdDomaineMetier;
     private Collection<OffreEntity> offresById;
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -41,33 +40,21 @@ public class MetierEntity {
         this.libelle = libelle;
     }
 
-    @Basic
-    @Column(name = "IdDomaineMetier", nullable = false)
-    public int getIdDomaineMetier() {
-        return idDomaineMetier;
-    }
-
-    public void setIdDomaineMetier(int idDomaineMetier) {
-        this.idDomaineMetier = idDomaineMetier;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MetierEntity that = (MetierEntity) o;
-        return id == that.id &&
-                idDomaineMetier == that.idDomaineMetier &&
-                Objects.equals(libelle, that.libelle);
+        return Objects.equals(id, that.id) && Objects.equals(libelle, that.libelle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, libelle, idDomaineMetier);
+        return Objects.hash(id, libelle);
     }
 
     @ManyToOne
-    @JoinColumn(name = "IdDomaineMetier", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "IdDomaineMetier", referencedColumnName = "Id", nullable = false)
     public DomaineMetierEntity getDomaineMetierByIdDomaineMetier() {
         return domaineMetierByIdDomaineMetier;
     }

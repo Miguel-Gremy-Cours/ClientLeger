@@ -13,17 +13,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TypeContrat", schema = "dbo", catalog = "MegaCasting")
 public class TypeContratEntity {
-    private int id;
+    private Integer id;
     private String libelle;
     private Collection<ContratEntity> contratsById;
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,8 +42,7 @@ public class TypeContratEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TypeContratEntity that = (TypeContratEntity) o;
-        return id == that.id &&
-                Objects.equals(libelle, that.libelle);
+        return Objects.equals(id, that.id) && Objects.equals(libelle, that.libelle);
     }
 
     @Override

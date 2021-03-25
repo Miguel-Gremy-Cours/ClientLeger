@@ -30,7 +30,7 @@
             <i class="glyphicon glyphicon-th"></i></span>
         </div>
 
-        <div th:with='civilite=${data.getIdCivilite()}'
+        <div th:with='civilite=${data.getCiviliteByIdCivilite().getId()}'
              class="form-group">
             <div class="form-check form-check">
                 <input class="form-check-input" type="radio" id="check_box_civility_male"

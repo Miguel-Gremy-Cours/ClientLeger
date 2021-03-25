@@ -1,6 +1,7 @@
 package com.cours.clientleger.Application.Internautes.Validator;
 
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class InternauteValidatorIsEmpty {
     /**
@@ -11,14 +12,13 @@ public class InternauteValidatorIsEmpty {
      */
     public static boolean isEmpty(Map<String, String> data) {
         boolean isEmpty = false;
-        int size = data.size();
-        int celEmpty = 0;
-        for (String value : data.values()) {
-            if (value.equals("")) {
-                celEmpty++;
+        AtomicInteger celEmpty = new AtomicInteger();
+        data.forEach((s, s2) -> {
+            if (s2.isEmpty()) {
+                celEmpty.getAndIncrement();
             }
-        }
-        if (celEmpty == size) {
+        });
+        if (celEmpty.get() >= 1) {
             isEmpty = true;
         }
         return isEmpty;

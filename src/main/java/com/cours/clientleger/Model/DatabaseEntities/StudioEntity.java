@@ -13,10 +13,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Studio", schema = "dbo", catalog = "MegaCasting")
 public class StudioEntity {
-    private int id;
+    private Integer id;
     private String siret;
     private String adresse;
-    private int numeroAdresse;
+    private Integer numeroAdresse;
     private String libelle;
     private String email;
     private String telephone;
@@ -24,11 +24,11 @@ public class StudioEntity {
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -54,11 +54,11 @@ public class StudioEntity {
 
     @Basic
     @Column(name = "NumeroAdresse", nullable = false)
-    public int getNumeroAdresse() {
+    public Integer getNumeroAdresse() {
         return numeroAdresse;
     }
 
-    public void setNumeroAdresse(int numeroAdresse) {
+    public void setNumeroAdresse(Integer numeroAdresse) {
         this.numeroAdresse = numeroAdresse;
     }
 
@@ -97,13 +97,7 @@ public class StudioEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StudioEntity that = (StudioEntity) o;
-        return id == that.id &&
-                numeroAdresse == that.numeroAdresse &&
-                Objects.equals(siret, that.siret) &&
-                Objects.equals(adresse, that.adresse) &&
-                Objects.equals(libelle, that.libelle) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(telephone, that.telephone);
+        return Objects.equals(id, that.id) && Objects.equals(siret, that.siret) && Objects.equals(adresse, that.adresse) && Objects.equals(numeroAdresse, that.numeroAdresse) && Objects.equals(libelle, that.libelle) && Objects.equals(email, that.email) && Objects.equals(telephone, that.telephone);
     }
 
     @Override

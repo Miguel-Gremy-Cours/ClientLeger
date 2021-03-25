@@ -25,7 +25,7 @@
             <label for="civilite">Civility</label>
             <label type="text" class="form-control" id="civilite"
                    name="civilite"
-                   th:text="${data.getIdCivilite() == '1'} ? 'Male' : 'Female'"></label>
+                   th:text="${data.getCiviliteByIdCivilite().getId() == '1'} ? 'Male' : 'Female'"></label>
         </div>
 
         <!-- Include Google link -->

@@ -7,8 +7,6 @@ import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,12 +16,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Internaute", schema = "dbo", catalog = "MegaCasting")
 public class InternauteEntity {
-    private int id;
+    private Integer id;
     private String nom;
     private String prenom;
     private Date dateNaissance;
     private Date dateInscription;
-    private int idCivilite;
     private String lienGoogle;
     private String login;
     private String password;
@@ -33,13 +30,12 @@ public class InternauteEntity {
     private Collection<OffresInternauteEntity> offresInternautesById;
 
     @Id
-    @Column(name = "Id", nullable = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    @Column(name = "Id", nullable = false)
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -81,16 +77,6 @@ public class InternauteEntity {
 
     public void setDateInscription(Date dateInscription) {
         this.dateInscription = dateInscription;
-    }
-
-    @Basic
-    @Column(name = "IdCivilite", nullable = false)
-    public int getIdCivilite() {
-        return idCivilite;
-    }
-
-    public void setIdCivilite(int idCivilite) {
-        this.idCivilite = idCivilite;
     }
 
     @Basic
@@ -148,26 +134,16 @@ public class InternauteEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InternauteEntity that = (InternauteEntity) o;
-        return id == that.id &&
-                idCivilite == that.idCivilite &&
-                Objects.equals(nom, that.nom) &&
-                Objects.equals(prenom, that.prenom) &&
-                Objects.equals(dateNaissance, that.dateNaissance) &&
-                Objects.equals(dateInscription, that.dateInscription) &&
-                Objects.equals(lienGoogle, that.lienGoogle) &&
-                Objects.equals(login, that.login) &&
-                Objects.equals(password, that.password) &&
-                Objects.equals(cv, that.cv) &&
-                Objects.equals(email, that.email);
+        return Objects.equals(id, that.id) && Objects.equals(nom, that.nom) && Objects.equals(prenom, that.prenom) && Objects.equals(dateNaissance, that.dateNaissance) && Objects.equals(dateInscription, that.dateInscription) && Objects.equals(lienGoogle, that.lienGoogle) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(cv, that.cv) && Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, prenom, dateNaissance, dateInscription, idCivilite, lienGoogle, login, password, cv, email);
+        return Objects.hash(id, nom, prenom, dateNaissance, dateInscription, lienGoogle, login, password, cv, email);
     }
 
     @ManyToOne
-    @JoinColumn(name = "IdCivilite", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "IdCivilite", referencedColumnName = "Id", nullable = false)
     public CiviliteEntity getCiviliteByIdCivilite() {
         return civiliteByIdCivilite;
     }
@@ -183,24 +159,5 @@ public class InternauteEntity {
 
     public void setOffresInternautesById(Collection<OffresInternauteEntity> offresInternautesById) {
         this.offresInternautesById = offresInternautesById;
-    }
-
-    @Override
-    public String toString() {
-        return "InternauteEntity{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", dateNaissance=" + dateNaissance +
-                ", dateInscription=" + dateInscription +
-                ", idCivilite=" + idCivilite +
-                ", lienGoogle='" + lienGoogle + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", cv='" + cv + '\'' +
-                ", email='" + email + '\'' +
-                ", civiliteByIdCivilite=" + civiliteByIdCivilite +
-                ", offresInternautesById=" + offresInternautesById +
-                '}';
     }
 }

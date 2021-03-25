@@ -14,34 +14,22 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Contrat", schema = "dbo", catalog = "MegaCasting")
 public class ContratEntity {
-    private int id;
-    private int idTypeContrat;
+    private Integer id;
     private Date debutContrat;
-    private int dureContrat;
+    private Integer dureContrat;
     private String codeContrat;
     private String fichierContrat;
-    private int idOffre;
     private TypeContratEntity typeContratByIdTypeContrat;
     private OffreEntity offreByIdOffre;
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "IdTypeContrat", nullable = false)
-    public int getIdTypeContrat() {
-        return idTypeContrat;
-    }
-
-    public void setIdTypeContrat(int idTypeContrat) {
-        this.idTypeContrat = idTypeContrat;
     }
 
     @Basic
@@ -56,11 +44,11 @@ public class ContratEntity {
 
     @Basic
     @Column(name = "DureContrat", nullable = false)
-    public int getDureContrat() {
+    public Integer getDureContrat() {
         return dureContrat;
     }
 
-    public void setDureContrat(int dureContrat) {
+    public void setDureContrat(Integer dureContrat) {
         this.dureContrat = dureContrat;
     }
 
@@ -84,37 +72,21 @@ public class ContratEntity {
         this.fichierContrat = fichierContrat;
     }
 
-    @Basic
-    @Column(name = "IdOffre", nullable = false)
-    public int getIdOffre() {
-        return idOffre;
-    }
-
-    public void setIdOffre(int idOffre) {
-        this.idOffre = idOffre;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContratEntity that = (ContratEntity) o;
-        return id == that.id &&
-                idTypeContrat == that.idTypeContrat &&
-                dureContrat == that.dureContrat &&
-                idOffre == that.idOffre &&
-                Objects.equals(debutContrat, that.debutContrat) &&
-                Objects.equals(codeContrat, that.codeContrat) &&
-                Objects.equals(fichierContrat, that.fichierContrat);
+        return Objects.equals(id, that.id) && Objects.equals(debutContrat, that.debutContrat) && Objects.equals(dureContrat, that.dureContrat) && Objects.equals(codeContrat, that.codeContrat) && Objects.equals(fichierContrat, that.fichierContrat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idTypeContrat, debutContrat, dureContrat, codeContrat, fichierContrat, idOffre);
+        return Objects.hash(id, debutContrat, dureContrat, codeContrat, fichierContrat);
     }
 
     @ManyToOne
-    @JoinColumn(name = "IdTypeContrat", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "IdTypeContrat", referencedColumnName = "Id", nullable = false)
     public TypeContratEntity getTypeContratByIdTypeContrat() {
         return typeContratByIdTypeContrat;
     }
@@ -124,7 +96,7 @@ public class ContratEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "IdOffre", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "IdOffre", referencedColumnName = "Id", nullable = false)
     public OffreEntity getOffreByIdOffre() {
         return offreByIdOffre;
     }
