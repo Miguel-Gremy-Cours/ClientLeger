@@ -1,0 +1,15 @@
+com.cours.clientleger
+com.cours.clientleger.Application.Internautes
+com.cours.clientleger.Application.Internautes.Validator
+com.cours.clientleger.Application.Offres
+com.cours.clientleger.Controller
+com.cours.clientleger.Controller.Internautes
+com.cours.clientleger.Controller.Offre
+com.cours.clientleger.Controller.Sign_in
+com.cours.clientleger.Controller.Sign_up
+com.cours.clientleger.Model
+com.cours.clientleger.Model.AccessingDataJPA
+com.cours.clientleger.Model.DatabaseEntities
+com.cours.clientleger.Model.Rest
+com.cours.clientleger.RestController
+com.cours.clientleger.Utils
