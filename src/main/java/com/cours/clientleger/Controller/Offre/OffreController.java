@@ -28,12 +28,15 @@ public class OffreController {
      * @return Offres ModelAndView
      */
     @GetMapping("")
-    public ModelAndView Offres(HttpSession httpSession) {
+    public ModelAndView Offres(HttpSession httpSession, String searchString) {
         Page page = new Page()
                 .setPagePath("page/offre/Offres")
                 .setTitle("Offres");
-
-        httpSession.setAttribute("offres", offresFunc.getOffres());
+        try {
+            httpSession.setAttribute("offres", offresFunc.search(searchString));
+        } catch (Exception ignore) {
+            httpSession.setAttribute("offres", offresFunc.getOffres());
+        }
 
         return refresh(page);
     }
@@ -45,7 +48,7 @@ public class OffreController {
      * @param httpSession Data in Http session
      * @return Offre ModelAndView
      */
-    @GetMapping("/{Id}")
+    @GetMapping("/detail/{Id}")
     public ModelAndView OffreDetail(@PathVariable int Id, HttpSession httpSession) {
         Page page = new Page()
                 .setPagePath("page/offre/Offre")

@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,5 +44,16 @@ public class OffresFunc {
             out = false;
         }
         return out;
+    }
+
+    public List<OffreEntity> search(String searchString) {
+        List<OffreEntity> offres = new ArrayList<>();
+        if (searchString.isEmpty() || searchString == null || searchString.equals("all")) {
+            offres = getOffres();
+        } else {
+            offres.addAll(offresRepository.findAllByDescriptionPosteContains(searchString));
+            offres.addAll(offresRepository.findAllByIntituleContains(searchString));
+        }
+        return offres.stream().distinct().collect(Collectors.toList());
     }
 }
