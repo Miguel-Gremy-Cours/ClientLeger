@@ -21,6 +21,7 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @Controller
 @RequestMapping("/sign_up")
 public class Sign_upController {
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
     InternauteFunc internauteFunc;
 

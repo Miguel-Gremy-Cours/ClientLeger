@@ -20,8 +20,10 @@ import javax.servlet.http.HttpSession;
 
 @Component
 public class InternauteFunc {
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
     InternauteRepository internauteRepository;
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
     CiviliteRepository civiliteRepository;
 
@@ -93,6 +95,7 @@ public class InternauteFunc {
      * @param input string to be hash
      * @return the hashed string
      */
+    @SuppressWarnings("UnstableApiUsage")
     private String hashFunc(String input) {
         return Hashing.sha256().hashString(input, StandardCharsets.UTF_8).toString();
     }

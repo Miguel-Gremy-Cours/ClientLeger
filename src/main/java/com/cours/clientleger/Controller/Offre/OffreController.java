@@ -18,6 +18,7 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @Controller
 @RequestMapping("/offre")
 public class OffreController {
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
     OffresFunc offresFunc;
 
@@ -55,6 +56,8 @@ public class OffreController {
                 .setTitle("Offre " + Id);
 
         httpSession.setAttribute("offre", offresFunc.getOffre(Id));
+
+        httpSession.removeAttribute("problems");
 
         return refresh(page);
     }

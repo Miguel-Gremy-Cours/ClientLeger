@@ -20,6 +20,7 @@ import static com.cours.clientleger.Controller.RefreshController.refresh;
 @Controller
 @RequestMapping("/profile")
 public class InternautesController {
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
     InternauteFunc internauteFunc;
 
@@ -71,8 +72,8 @@ public class InternautesController {
             page.setTitle("Profile");
             httpSession.setAttribute("data", internauteFunc.get(Integer.parseInt(httpSession.getAttribute("id").toString())));
             httpSession.removeAttribute("problems");
-        } catch (Exception ignore) {
-            System.out.println(ignore.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             page.setPagePath("page/profile/Modify")
                     .setTitle("Modify");
             httpSession.setAttribute("problems", "Invalid input");
