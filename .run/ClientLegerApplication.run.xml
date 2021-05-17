@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ClientLegerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <module name="Epreuve BTS" />
+    <module name="clientleger" />
     <extension name="net.ashald.envfile">
       <option name="IS_ENABLED" value="true" />
       <option name="IS_SUBST" value="true" />
@@ -15,6 +15,7 @@
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.cours.clientleger.ClientLegerApplication" />
     <option name="VM_PARAMETERS" value="-Dspring.profiles.active=miguel" />
     <option name="ALTERNATIVE_JRE_PATH" />
+    <option name="SHORTEN_COMMAND_LINE" value="NONE" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
