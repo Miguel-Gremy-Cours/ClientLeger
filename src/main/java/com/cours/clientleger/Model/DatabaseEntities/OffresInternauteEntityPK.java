@@ -1,7 +1,6 @@
 package com.cours.clientleger.Model.DatabaseEntities;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -10,7 +9,7 @@ public class OffresInternauteEntityPK implements Serializable {
     private int idInternaute;
     private int idOffre;
 
-    @Column(name = "IdInternaute", nullable = false)
+    @Column(name = "IdInternaute")
     @Id
     public int getIdInternaute() {
         return idInternaute;
@@ -20,7 +19,7 @@ public class OffresInternauteEntityPK implements Serializable {
         this.idInternaute = idInternaute;
     }
 
-    @Column(name = "IdOffre", nullable = false)
+    @Column(name = "IdOffre")
     @Id
     public int getIdOffre() {
         return idOffre;
@@ -34,13 +33,19 @@ public class OffresInternauteEntityPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         OffresInternauteEntityPK that = (OffresInternauteEntityPK) o;
-        return idInternaute == that.idInternaute &&
-                idOffre == that.idOffre;
+
+        if (idInternaute != that.idInternaute) return false;
+        if (idOffre != that.idOffre) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idInternaute, idOffre);
+        int result = idInternaute;
+        result = 31 * result + idOffre;
+        return result;
     }
 }

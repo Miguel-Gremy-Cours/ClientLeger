@@ -1,11 +1,12 @@
 package com.cours.clientleger.Model.DatabaseEntities;
 
 import java.util.Collection;
-import java.util.Objects;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -13,27 +14,28 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Studio", schema = "dbo", catalog = "MegaCasting")
 public class StudioEntity {
-    private Integer id;
+    private int id;
     private String siret;
     private String adresse;
-    private Integer numeroAdresse;
+    private int numeroAdresse;
     private String libelle;
     private String email;
     private String telephone;
     private Collection<OffreEntity> offresById;
 
     @Id
-    @Column(name = "Id", nullable = false)
-    public Integer getId() {
+    @Column(name = "Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "Siret", nullable = false, length = 100)
+    @Column(name = "Siret")
     public String getSiret() {
         return siret;
     }
@@ -43,7 +45,7 @@ public class StudioEntity {
     }
 
     @Basic
-    @Column(name = "Adresse", nullable = false, length = 25)
+    @Column(name = "Adresse")
     public String getAdresse() {
         return adresse;
     }
@@ -53,17 +55,17 @@ public class StudioEntity {
     }
 
     @Basic
-    @Column(name = "NumeroAdresse", nullable = false)
-    public Integer getNumeroAdresse() {
+    @Column(name = "NumeroAdresse")
+    public int getNumeroAdresse() {
         return numeroAdresse;
     }
 
-    public void setNumeroAdresse(Integer numeroAdresse) {
+    public void setNumeroAdresse(int numeroAdresse) {
         this.numeroAdresse = numeroAdresse;
     }
 
     @Basic
-    @Column(name = "Libelle", nullable = false, length = 25)
+    @Column(name = "Libelle")
     public String getLibelle() {
         return libelle;
     }
@@ -73,7 +75,7 @@ public class StudioEntity {
     }
 
     @Basic
-    @Column(name = "Email", nullable = false, length = 254)
+    @Column(name = "Email")
     public String getEmail() {
         return email;
     }
@@ -83,7 +85,7 @@ public class StudioEntity {
     }
 
     @Basic
-    @Column(name = "Telephone", nullable = false, length = 20)
+    @Column(name = "Telephone")
     public String getTelephone() {
         return telephone;
     }
@@ -96,13 +98,31 @@ public class StudioEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         StudioEntity that = (StudioEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(siret, that.siret) && Objects.equals(adresse, that.adresse) && Objects.equals(numeroAdresse, that.numeroAdresse) && Objects.equals(libelle, that.libelle) && Objects.equals(email, that.email) && Objects.equals(telephone, that.telephone);
+
+        if (id != that.id) return false;
+        if (numeroAdresse != that.numeroAdresse) return false;
+        if (siret != null ? !siret.equals(that.siret) : that.siret != null) return false;
+        if (adresse != null ? !adresse.equals(that.adresse) : that.adresse != null) return false;
+        if (libelle != null ? !libelle.equals(that.libelle) : that.libelle != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (telephone != null ? !telephone.equals(that.telephone) : that.telephone != null)
+            return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, siret, adresse, numeroAdresse, libelle, email, telephone);
+        int result = id;
+        result = 31 * result + (siret != null ? siret.hashCode() : 0);
+        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
+        result = 31 * result + numeroAdresse;
+        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
+        return result;
     }
 
     @OneToMany(mappedBy = "studioByIdStudio")

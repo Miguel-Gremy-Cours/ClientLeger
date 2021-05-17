@@ -110,7 +110,7 @@ public class InternauteFunc {
      */
     private InternauteEntity createInternaute(Map<String, String> internauteMap, int id) {
         InternauteEntity internaute = new InternauteEntity();
-        internaute.setCiviliteByIdCivilite(civiliteRepository.findById(internauteMap.get("civility").equals("male") ? 1 : 2));
+        internaute.setIdCivilite(internauteMap.get("civility").equals("male") ? 1 : 2);
         internaute.setNom(internauteMap.get("nom"));
         internaute.setPrenom(internauteMap.get("prenom"));
         internaute.setDateNaissance(Date.valueOf(stringToLocalDate(internauteMap.get("date_naissance"))));

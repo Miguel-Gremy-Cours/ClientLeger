@@ -1,7 +1,6 @@
 package com.cours.clientleger.Model.DatabaseEntities;
 
 import java.sql.Date;
-import java.util.Objects;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -23,7 +22,7 @@ public class OffresInternauteEntity {
     private OffreEntity offreByIdOffre;
 
     @Id
-    @Column(name = "IdInternaute", nullable = false)
+    @Column(name = "IdInternaute")
     public int getIdInternaute() {
         return idInternaute;
     }
@@ -33,7 +32,7 @@ public class OffresInternauteEntity {
     }
 
     @Id
-    @Column(name = "IdOffre", nullable = false)
+    @Column(name = "IdOffre")
     public int getIdOffre() {
         return idOffre;
     }
@@ -43,7 +42,7 @@ public class OffresInternauteEntity {
     }
 
     @Basic
-    @Column(name = "DatePostulation", nullable = false)
+    @Column(name = "DatePostulation")
     public Date getDatePostulation() {
         return datePostulation;
     }
@@ -56,15 +55,23 @@ public class OffresInternauteEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         OffresInternauteEntity that = (OffresInternauteEntity) o;
-        return idInternaute == that.idInternaute &&
-                idOffre == that.idOffre &&
-                Objects.equals(datePostulation, that.datePostulation);
+
+        if (idInternaute != that.idInternaute) return false;
+        if (idOffre != that.idOffre) return false;
+        if (datePostulation != null ? !datePostulation.equals(that.datePostulation) : that.datePostulation != null)
+            return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idInternaute, idOffre, datePostulation);
+        int result = idInternaute;
+        result = 31 * result + idOffre;
+        result = 31 * result + (datePostulation != null ? datePostulation.hashCode() : 0);
+        return result;
     }
 
     @ManyToOne
